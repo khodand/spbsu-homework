@@ -23,7 +23,7 @@ int main()
 	int a = 0;
 	int n = 0;
 
-	cout << "¬ведите a и n: " << endl;
+	cout << "Enter a and n: " << endl;
 	cin >> a >> n;
 
 	cout << "a^n = " << mypow(a, n);
