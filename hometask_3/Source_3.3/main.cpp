@@ -1,12 +1,9 @@
 #include <iostream>
 #include "qsort.h"
-#include "myString.h"
 
 using namespace std;
 
-
 int main() {
-	
 	int number;
 
 	cout << "Enter your number: " << endl;
