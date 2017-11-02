@@ -18,7 +18,7 @@ int main()
 	for (int i = 0; i < numOfSums; ++i)
 		numb += sums[i] * sums[i];
 
-	cout << "Количество счастливых билетиков = " << numb << endl;
+	cout << "Number of lucky tickets = " << numb << endl;
 
 	delete[] sums;
 
