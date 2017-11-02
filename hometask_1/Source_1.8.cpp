@@ -25,9 +25,9 @@ int main()
 	int n = 0;
 	int numberOfMethod = 0;
 
-	cout << "Введите n: " << endl;
+	cout << "Enter n: " << endl;
 	cin >> n;
-	cout << "Итеративно? (0)" << endl << "Рекурсивно? (1)" << endl << "Введите цифру: " << endl;
+	cout << "Recursive? (0)" << endl << "iterative? (1)" << endl << "Enter number of method: " << endl;
 	cin >> method;
 
 	if (method)
