@@ -21,25 +21,25 @@ int main()
 	int m = 0;
 	int n = 0;
 
-	cout << "Ââåäèòå ğàçìåğ ìàññèâà: " << endl; 
+	cout << "Enter the array's lenght: " << endl; 
 	cin >> n;
 
 	int *arr = new int[n];
 
-	cout << "Ââåäèòå ìàññèâ: " << endl;
+	cout << "Enter your numbers: " << endl;
 	for (int i = 0; i < n; ++i) 
 	{
 		cin >> arr[i];
 	}
 	
-	cout << "Ââåäèòå m: " << endl;
+	cout << "Enter m: " << endl;
 	cin >> m;
 	
 	reverse(arr, 0, m - 1);
 	reverse(arr, m, n - 1);
 	reverse(arr, 0, n - 1);
 
-	cout << "Ğåçóëüòàò: " << endl;
+	cout << "Result: " << endl;
 	for (int i = 0; i < n; ++i)
 		cout << arr[i] << " ";
 
