@@ -19,7 +19,7 @@ int main() {
 	qsort(numbers, 0, len - 1);
 
 	int maxSearcher = len - 1;
-	while (maxSearcher >= 0 && numbers[maxSearcher] != numbers[maxSearcher - 1])
+	while (maxSearcher > 0 && numbers[maxSearcher] != numbers[maxSearcher - 1])
 		maxSearcher--;
 
 	if (maxSearcher == 0)
