@@ -26,7 +26,8 @@ int main() {
 
 	cout << "Min from such digits: ";
 	for (int i = 0; i < numberOfDigits; ++i)
-		cout << digits[i];
+		if (digits[i] != 0)
+			cout << digits[i];
 	cout << endl;
 
 	delete[] digits;
