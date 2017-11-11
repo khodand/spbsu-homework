@@ -12,12 +12,12 @@ int main() {
 	int filledStrings = 0;
 	while (!cin.eof()) {
 		cin.get(curChar);
-		if (curChar == 9 || curChar == ' ')
+		if (curChar == '\t' || curChar == ' ')
 			continue;
 
-		isFilled += (curChar >= 0 && curChar < 256 && curChar != '\t');
+		isFilled += (curChar >= 0 && curChar < 256 && curChar != '\n');
 
-		if (curChar == '\t') {
+		if (curChar == '\n') {
 			if (isFilled)
 				filledStrings++;
 			isFilled = false;
