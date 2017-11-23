@@ -27,5 +27,6 @@ int main() {
 	cout << "Average lenght of chain: " << endl;
 	cout << getAverageLen(map);
 
+	clear(map);
 	return 0;
 }
