@@ -1,12 +1,10 @@
 #include <iostream>
-#include "hashTab.h"
 #include <fstream>
+#include "hashTab.h"
 
 using namespace std;
 
 int main() {
-	String A;
-	String B;
 	hashMap map;
 
 	ofstream fout("Text.txt", ios::app);
@@ -16,6 +14,7 @@ int main() {
 	ifstream in("Text.txt");
 	bool isEnd = false;
 	while (!isEnd) {
+		String A;
 		isEnd = input(A, in);
 		if (A.size != 0)
 			add(A, map);
@@ -23,10 +22,10 @@ int main() {
 	in.close();
 
 	out(map);
-	cout << numberOfWords(map);
-	cout << " ";
+	cout << "Number of words: " << endl;
+	cout << numberOfWords(map) << endl;
+	cout << "Average lenght of chain: " << endl;
 	cout << getAverageLen(map);
-	cout << endl;
 
 	return 0;
 }
