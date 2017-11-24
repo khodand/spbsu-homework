@@ -33,7 +33,8 @@ int main()
 	cout << "Enter the number of Fibonacci number: " << endl;
 	cin >> n;
 	
-	cout << n << "Fibonacci number is calculated recursively and iteratively:" << endl << recursiveFibo(n) << endl << iterativeFibo(n);
+	cout << n << "Fibonacci number is calculated recursively and iteratively:" << endl << recursiveFibonacci(n) 
+		<< endl << iterativeFibonacci(n);
 
 	return 0;
 }
