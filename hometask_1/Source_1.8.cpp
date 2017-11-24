@@ -23,7 +23,7 @@ long long iterative(int n)
 int main()
 {
 	int n = 0;
-	int numberOfMethod = 0;
+	int method = 0;
 
 	cout << "Enter n: " << endl;
 	cin >> n;
