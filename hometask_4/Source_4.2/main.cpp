@@ -10,9 +10,8 @@ int main() {
 
 	char curChar;
 
-	Queue *tempQ = createQueue();
-	Queue queue = *tempQ;
-	delete[] tempQ;
+	Queue queue;
+	createQueue(queue);
 
 	while (!cin.eof()) {
 		cin.get(curChar);

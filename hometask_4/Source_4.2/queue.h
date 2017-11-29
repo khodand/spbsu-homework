@@ -10,7 +10,7 @@ struct Queue {
 	QueueElement *tail;
 };
 
-Queue *createQueue();
+void createQueue(Queue &queue);
 void clear(Queue &queue);
 
 bool isEmpty(Queue &queue);
