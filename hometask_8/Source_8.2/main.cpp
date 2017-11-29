@@ -28,8 +28,11 @@ int main() {
 	cin >> first >> last;
 
 	cout << "Your substring:" << endl;
-	output(getSubstring(A, first, last));
+	String out = getSubstring(A, first, last);
+	output(out);
 
-	system("pause");
+	clear(A);
+	clear(B);
+	clear(out);
 	return 0;
 }
