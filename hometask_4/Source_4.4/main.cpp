@@ -6,9 +6,8 @@
 using namespace std;
 
 int main() {
-	Queue *tempQ = createQueue();
-	Queue inStr = *tempQ;
-	delete[] tempQ;
+	Queue inStr;
+	createQueue(inStr);
 
 	cout << "Enter an expression in postfix notation" << endl << "Don't forget to put '=' at the end!!!" << endl;
 

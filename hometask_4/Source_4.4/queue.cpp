@@ -2,12 +2,13 @@
 
 const int error = -2147483646;
 
-Queue *createQueue() {
+void createQueue(Queue &A) {
 	Queue *newQueue = new Queue;
 	newQueue->head = nullptr;
 	newQueue->tail = nullptr;
 
-	return newQueue;
+	A = *newQueue;
+	delete newQueue;
 }
 
 QueueElement* createQueueElement(int value) {
@@ -19,7 +20,7 @@ QueueElement* createQueueElement(int value) {
 }
 
 void clear(Queue &queue) {
-	while (isEmpty(queue))
+	while (!isEmpty(queue))
 		pop(queue);
 }
 
@@ -54,7 +55,7 @@ int pop(Queue &queue) {
 	return result;
 }
 
-int front(Queue & queue) {
+int front(Queue &queue) {
 	if (isEmpty(queue))
 		return error;
 
