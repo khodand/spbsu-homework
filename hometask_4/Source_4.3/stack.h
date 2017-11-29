@@ -9,7 +9,7 @@ struct Stack {
 	StackElement *top;
 };
 
-Stack *createStack();
+void createStack(Stack &A);
 void clear(Stack &A);
 
 bool isEmpty(Stack &A);

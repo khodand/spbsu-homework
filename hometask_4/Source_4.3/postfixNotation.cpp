@@ -13,9 +13,8 @@ int calculate(Queue expression, bool isPostfix) {
 	if (!isPostfix)
 		expression = toPostfix(expression);
 
-	Stack *tempS = createStack();
-	Stack operands = *tempS;
-	delete[] tempS;
+	Stack operands;
+	createStack(operands);
 
 	while (!isEmpty(expression)) {
 		char curToken = front(expression);
@@ -37,7 +36,7 @@ int calculate(Queue expression, bool isPostfix) {
 
 		case '-':
 			subtrahend = pop(operands);
-			newOperand = pop(operands) - subtrahend; 
+			newOperand = pop(operands) - subtrahend;
 			push(operands, newOperand);
 			break;
 
@@ -63,13 +62,11 @@ int calculate(Queue expression, bool isPostfix) {
 }
 
 Queue toPostfix(Queue inStr) {
-	Stack *tempS = createStack();
-	Stack operations = *tempS;
-	delete[] tempS;
+	Stack operations;
+	createStack(operations);
 
-	Queue *tempQ = createQueue();
-	Queue outStr = *tempQ;
-	delete[] tempQ;
+	Queue outStr;
+	createQueue(outStr);
 
 	while (!isEmpty(inStr)) {
 		char curToken = front(inStr);
@@ -88,7 +85,6 @@ Queue toPostfix(Queue inStr) {
 		char last = top(operations);
 		switch (curToken) {
 		case '+':
-
 		case '-':
 			if (last == '(') {
 				push(operations, curToken);
@@ -99,7 +95,6 @@ Queue toPostfix(Queue inStr) {
 			break;
 
 		case '*':
-
 		case '/':
 			if (last == '(' || last == '+' || last == '-') {
 				push(operations, curToken);
