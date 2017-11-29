@@ -20,7 +20,7 @@ QueueElement* createQueueElement(int value) {
 }
 
 void clear(Queue &queue) {
-	while (isEmpty(queue))
+	while (!isEmpty(queue))
 		pop(queue);
 }
 
