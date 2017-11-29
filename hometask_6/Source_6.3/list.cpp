@@ -1,14 +1,14 @@
 #include "list.h"
 
-listEl *create(person *account) {
-	listEl *newEl = new listEl;
+ListEl *create(Person *account) {
+	ListEl *newEl = new ListEl;
 	newEl->account = account;
 	newEl->next = nullptr;
 
 	return newEl;
 }
 
-void add(person *account, list &A) {
+void add(Person *account, List &A) {
 	if (isEmpty(A)) {
 		A.first = create(account);
 		A.last = A.first;
@@ -21,8 +21,8 @@ void add(person *account, list &A) {
 	A.size++;
 }
 
-person get(int i, list &A) {
-	listEl *temp = A.first;
+Person get(int i, List &A) {
+	ListEl *temp = A.first;
 	while (i > 0) {
 		temp = temp->next;
 		--i;
@@ -31,13 +31,13 @@ person get(int i, list &A) {
 	return *temp->account;
 }
 
-void remove(int i, list &A) {
+void remove(int i, List &A) {
 	if (i == 0) {
 		deletePerson(A.first->account);
 		A.first = A.first->next;
 	}
 	else {
-		listEl *temp = A.first;
+		ListEl *temp = A.first;
 		while (i > 1) {
 			temp = temp->next;
 			--i;
@@ -49,11 +49,11 @@ void remove(int i, list &A) {
 	A.size--;
 }
 
-bool isEmpty(list &A) {
+bool isEmpty(List &A) {
 	return A.first == nullptr;
 }
 
-void clear(list &A) {
+void clear(List &A) {
 	while (!isEmpty(A))
 		remove(0, A);
 }

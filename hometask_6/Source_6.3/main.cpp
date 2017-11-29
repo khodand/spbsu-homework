@@ -6,7 +6,7 @@
 using namespace std;
 
 int main() {
-	phoneBook myBook;
+	PhoneBook myBook;
 	int number = 0;
 
 	ifstream in("Text.txt");
@@ -21,8 +21,10 @@ int main() {
 	in.close();
 
 	ofstream out("Text.txt");
+	cout << "0 - exit" << endl << "1 - add an entry (name and phone number)" << endl << "2 - find number bu name" <<
+		endl << "3 - find name by number" << endl << "4 - save the current data to a file" << endl;
 
-	cout << "Enter your command to phonebook: " << endl;
+	cout << endl << "Enter your command to phonebook: " << endl;
 	int command = 0;
 	cin >> command;
 	while (command != 0) {
@@ -33,7 +35,7 @@ int main() {
 			number = inputNumber();
 			add(name, number, myBook);
 			break;
-			
+
 		case 2:
 			name = inputName();
 			cout << getNumber(name, myBook) << endl;

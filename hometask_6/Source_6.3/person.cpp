@@ -1,14 +1,14 @@
 #include "person.h"
 
-person *create(char name[], int number) {
-	person *newPerson = new person;
+Person *create(char name[], int number) {
+	Person *newPerson = new Person;
 	newPerson->name = name;
 	newPerson->number = number;
 
 	return newPerson;
 }
 
-void deletePerson(person *person) {
+void deletePerson(Person *person) {
 	delete[] person->name;
 	delete person;
 }

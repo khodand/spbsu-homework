@@ -1,9 +1,9 @@
 #pragma once
 
-struct person {
+struct Person {
 	char *name;
 	int number;
 };
 
-person *create(char name[], int number);
-void deletePerson(person *person);
+Person *create(char name[], int number);
+void deletePerson(Person *person);

@@ -2,15 +2,15 @@
 #include <fstream>
 #include "list.h"
 
-struct phoneBook {
-	list phoneList;
+struct PhoneBook {
+	List phoneList;
 };
 
-void add(char name[], int number, phoneBook &A);
+void add(char name[], int number, PhoneBook &A);
 
-int getNumber(char name[], phoneBook &A);
-char *getName(int number, phoneBook &A);
+int getNumber(char name[], PhoneBook &A);
+char *getName(int number, PhoneBook &A);
 
-void save(std::ofstream &out, phoneBook &A);
+void save(std::ofstream &out, PhoneBook &A);
 
-void clear(phoneBook &A);
+void clear(PhoneBook &A);

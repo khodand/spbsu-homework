@@ -11,13 +11,13 @@ bool isEqual(char *A, char *B) {
 	return true;
 }
 
-void add(char name[], int number, phoneBook &A) {
+void add(char name[], int number, PhoneBook &A) {
 	add(create(name, number), A.phoneList);
 }
 
-int getNumber(char name[], phoneBook &A) {
+int getNumber(char name[], PhoneBook &A) {
 	for (int i = 0; i < A.phoneList.size; ++i) {
-		person curPerson = get(i, A.phoneList);
+		Person curPerson = get(i, A.phoneList);
 
 		if (isEqual(curPerson.name, name))
 			return curPerson.number;
@@ -25,9 +25,9 @@ int getNumber(char name[], phoneBook &A) {
 	return -1;
 }
 
-char *getName(int number, phoneBook &A) {
+char *getName(int number, PhoneBook &A) {
 	for (int i = 0; i < A.phoneList.size; ++i) {
-		person curPerson = get(i, A.phoneList);
+		Person curPerson = get(i, A.phoneList);
 
 		if (curPerson.number == number)
 			return curPerson.name;
@@ -35,14 +35,14 @@ char *getName(int number, phoneBook &A) {
 	return "No such name";
 }
 
-void save(std::ofstream &out, phoneBook &A) {
+void save(std::ofstream &out, PhoneBook &A) {
 	out << A.phoneList.size << std::endl;
 	for (int i = 0; i < A.phoneList.size; ++i) {
-		person curPerson = get(i, A.phoneList);
+		Person curPerson = get(i, A.phoneList);
 		out << curPerson.name << " " << curPerson.number << std::endl;
 	}
 }
 
-void clear(phoneBook &A) {
+void clear(PhoneBook &A) {
 	clear(A.phoneList);
 }
