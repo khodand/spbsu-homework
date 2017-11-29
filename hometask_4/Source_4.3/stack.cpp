@@ -2,11 +2,11 @@
 
 const int error = -2147483646;
 
-void createStack(Stack &A) {
+void createStack(Stack &stack) {
 	Stack *newStack = new Stack;
 	newStack->top = nullptr;
 	
-	A = *newStack;
+	stack = *newStack;
 	delete newStack;
 }
 
@@ -19,39 +19,39 @@ StackElement* createStackElement(int value) {
 	return newStackElement;
 }
 
-void clear(Stack &A) {
-	while (!isEmpty(A))
-		pop(A);
+void clear(Stack &stack) {
+	while (!isEmpty(stack))
+		pop(stack);
 }
 
-bool isEmpty(Stack &A) {
-	return A.top == nullptr;
+bool isEmpty(Stack &stack) {
+	return stack.top == nullptr;
 }
 
-void push(Stack &A, int value) {
+void push(Stack &stack, int value) {
 	StackElement *newStackElement = createStackElement(value);
 
-	newStackElement->next = A.top;
-	A.top = newStackElement;
+	newStackElement->next = stack.top;
+	stack.top = newStackElement;
 }
 
-int pop(Stack &A) {
+int pop(Stack &stack) {
 	
-	if (isEmpty(A))
+	if (isEmpty(stack))
 		return error;
 
-	int result = A.top->value;
+	int result = stack.top->value;
 
-	StackElement *tempElement = A.top;
-	A.top = A.top->next;
+	StackElement *tempElement = stack.top;
+	stack.top = stack.top->next;
 	delete tempElement;
 
 	return result;
 }
 
-int top(Stack &A) {
-	if (isEmpty(A))
+int top(Stack &stack) {
+	if (isEmpty(stack))
 		return error;
 
-	return A.top->value;
+	return stack.top->value;
 }

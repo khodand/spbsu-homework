@@ -9,12 +9,12 @@ struct Stack {
 	StackElement *top;
 };
 
-void createStack(Stack &A);
-void clear(Stack &A);
+void createStack(Stack &stack);
+void clear(Stack &stack);
 
-bool isEmpty(Stack &A);
+bool isEmpty(Stack &stack);
 
-void push(Stack &A, int value);
-int pop(Stack &A);
+void push(Stack &stack, int value);
+int pop(Stack &stack);
 
-int top(Stack &A);
+int top(Stack &stack);
