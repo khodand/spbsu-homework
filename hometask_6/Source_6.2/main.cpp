@@ -4,8 +4,8 @@
 using namespace std;
 
 int main() {	
-	cList A;
-	createCList(A);
+	CycleList warriorsCircle;
+	createCycleList(warriorsCircle);
 	
 	int number = 0;
 	int killingIndex = 0;
@@ -13,17 +13,17 @@ int main() {
 	cin >> number >> killingIndex;
 
 	for (int i = number - 1; i >= 0; --i)
-		push(i, A);
+		push(i, warriorsCircle);
 
 	int toKill = killingIndex;
-	while (A.size > 1) {
-		remove(A, toKill - 1);
-		toKill = (toKill + killingIndex - 1) % A.size;
+	while (warriorsCircle.size > 1) {
+		remove(warriorsCircle, toKill - 1);
+		toKill = (toKill + killingIndex - 1) % getSize(warriorsCircle);
 	}
 
 	cout << "Joseph should stay on position with number : ";
-	out(A);
+	out(warriorsCircle);
 
-	clear(A);
+	clear(warriorsCircle);
 	return 0;
 }

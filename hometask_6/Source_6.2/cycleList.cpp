@@ -1,22 +1,23 @@
 #include "cycleList.h"
 #include <iostream>
 
-void createCList(cList &A) {
-	cList *newCList = new cList;
-	newCList->top = nullptr;
-	newCList->last = newCList->top;
-	newCList->size = 0;
+void createCycleList(CycleList &A) {
+	CycleList *newList = new CycleList;
+	newList->top = nullptr;
+	newList->last = newList->top;
+	newList->size = 0;
 
-	A = *newCList;
+	A = *newList;
+	delete newList;
 }
 
-bool isEmpty(cList &A) {
+bool isEmpty(CycleList &A) {
 	return A.top == nullptr;
 }
 
-void push(int value, cList &A) {
+void push(int value, CycleList &A) {
 	A.size++;
-	listEl *newEl = new listEl;
+	ListEl *newEl = new ListEl;
 	newEl->value = value;
 	newEl->next = nullptr;
 
@@ -38,10 +39,10 @@ void push(int value, cList &A) {
 	}
 }
 
-void remove(cList &A, int i) {
+void remove(CycleList &A, int i) {
 	A.size--;
-	listEl *curEl = A.top;
-	listEl *prevEl = A.last;
+	ListEl *curEl = A.top;
+	ListEl *prevEl = A.last;
 	if (i != 0) {
 		while (i > 0) {
 			prevEl = curEl;
@@ -58,8 +59,8 @@ void remove(cList &A, int i) {
 	}
 }
 
-int get(cList &A, int i) {
-	listEl *curEl = A.top;
+int get(CycleList &A, int i) {
+	ListEl *curEl = A.top;
 	while (i > 0) {
 		curEl = curEl->next;
 		i--;
@@ -68,13 +69,17 @@ int get(cList &A, int i) {
 	return curEl->value;
 }
 
-void out(cList &A, char end) {
+int getSize(CycleList &A) {
+	return A.size;
+}
+
+void out(CycleList &A, char end) {
 	for (int i = 0; i < A.size; ++i)
 		std::cout << get(A, i) << " ";
 	std::cout << end;
 }
 
-void clear(cList &A) {
+void clear(CycleList &A) {
 	for (int i = 0; i < A.size; ++i)
 		remove(A, 0);
 }
