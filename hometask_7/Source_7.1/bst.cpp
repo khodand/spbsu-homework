@@ -1,8 +1,8 @@
 #include "bst.h"
 #include <iostream>
 
-node *createNode(int value) {
-	node *newNode = new node;
+Node *createNode(int value) {
+	Node *newNode = new Node;
 
 	newNode->value = value;
 	newNode->left = nullptr;
@@ -11,12 +11,12 @@ node *createNode(int value) {
 	return newNode;
 }
 
-bool isEmpty(searchTree &A) {
+bool isEmpty(SearchTree &A) {
 	return A.root == nullptr;
 }
 
 //  left < root <= right
-void push(int value, node *&p) {
+void push(int value, Node *&p) {
 	if (p == nullptr) {
 		p = createNode(value);
 		return;
@@ -27,16 +27,16 @@ void push(int value, node *&p) {
 		push(value, p->right);
 }
 
-void add(int value, searchTree &A) {
+void add(int value, SearchTree &A) {
 	push(value, A.root);
 }
 
 // the left subtree into root
-void deleteNode(node *&p) {
-	node *newRoot = p->left;
+void deleteNode(Node *&p) {
+	Node *newRoot = p->left;
 
 	if (p->right != nullptr) {
-		node *rightEnd = p->right;
+		Node *rightEnd = p->right;
 		while (rightEnd->left != nullptr)
 			rightEnd = rightEnd->left;
 
@@ -48,7 +48,7 @@ void deleteNode(node *&p) {
 		p = newRoot;
 }
 
-void remove(int value, node *&p) {
+void remove(int value, Node *&p) {
 	if (p == nullptr)
 		return;
 
@@ -62,11 +62,11 @@ void remove(int value, node *&p) {
 }
 
 // Removes all items with such key
-void remove(int value, searchTree &A) {
+void remove(int value, SearchTree &A) {
 	remove(value, A.root);
 }
 
-void outByLevel(node *p) {
+void outByLevel(Node *p) {
 	if (p != nullptr) {
 		std::cout << " (" << p->value;
 		outByLevel(p->left);
@@ -78,12 +78,12 @@ void outByLevel(node *p) {
 		std::cout << " NULL";
 }
 
-void abcOut(searchTree &A) {
+void abcOut(SearchTree &A) {
 	outByLevel(A.root);
 	std::cout << std::endl;
 }
 
-bool isContains(int value, node *p) {
+bool isContains(int value, Node *p) {
 	if (p == nullptr)
 		return false;
 
@@ -96,11 +96,11 @@ bool isContains(int value, node *p) {
 		return isContains(value, p->right);
 }
 
-bool isContains(int value, searchTree &A) {
+bool isContains(int value, SearchTree &A) {
 	return isContains(value, A.root);
 }
 
-void incOut(node *p) {
+void incOut(Node *p) {
 	if (p == nullptr)
 		return;
 
@@ -109,12 +109,12 @@ void incOut(node *p) {
 	incOut(p->right);
 }
 
-void increasOut(searchTree &A) {
+void increasOut(SearchTree &A) {
 	incOut(A.root);
 	std::cout << std::endl;
 }
 
-void decOut(node *p) {
+void decOut(Node *p) {
 	if (p == nullptr)
 		return;
 
@@ -123,7 +123,19 @@ void decOut(node *p) {
 	decOut(p->left);
 }
 
-void decreasOut(searchTree &A) {
+void decreasOut(SearchTree &A) {
 	decOut(A.root);
 	std::cout << std::endl;
+}
+
+void clear(Node *p) {
+	if (p->left != nullptr)
+		clear(p->left);
+	if (p->right != nullptr)
+		clear(p->right);
+	
+	delete p;
+}
+void clear(SearchTree &A) {
+	clear(A.root);
 }

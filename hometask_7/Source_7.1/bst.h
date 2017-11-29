@@ -1,21 +1,23 @@
 #pragma once
 
-struct node {
+struct Node {
 	int value;
-	node *left;
-	node *right;
+	Node *left;
+	Node *right;
 };
 //  left < root <= right
-struct searchTree {
-	node *root = nullptr;
+struct SearchTree {
+	Node *root = nullptr;
 };
 
-void add(int value, searchTree &A);
-void remove(int value, searchTree &A);
+void add(int value, SearchTree &A);
+void remove(int value, SearchTree &A);
 
-bool isContains(int value, searchTree &A);
-bool isEmpty(searchTree &A);
+bool isContains(int value, SearchTree &A);
+bool isEmpty(SearchTree &A);
 
-void increasOut(searchTree &A);
-void decreasOut(searchTree &A);
-void abcOut(searchTree &A);
+void increasOut(SearchTree &A);
+void decreasOut(SearchTree &A);
+void abcOut(SearchTree &A);
+
+void clear(SearchTree &A);
