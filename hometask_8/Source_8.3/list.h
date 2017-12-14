@@ -2,8 +2,8 @@
 #include "word.h"
 
 struct listEl {
-	wordInfo *word;
-	listEl *next;
+	wordInfo *word = nullptr;
+	listEl *next = nullptr;
 };
 
 struct list {

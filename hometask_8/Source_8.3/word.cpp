@@ -8,7 +8,7 @@ wordInfo *create(String text) {
 	return newWord;
 }
 
-void deleteWord(wordInfo  *word) {
+void deleteWord(wordInfo *word) {
 	clear(word->text);
-	delete word;
+//	delete word;
 }

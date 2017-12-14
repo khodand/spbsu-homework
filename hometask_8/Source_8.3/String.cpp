@@ -1,7 +1,8 @@
 #include "String.h"
 
+const int maxSize = 10000;
+
 bool input(String &string, std::ifstream &cin) {
-	const int maxSize = 10;
 	char tmp[maxSize];
 	char curSymbol = ' ';
 
@@ -22,7 +23,6 @@ bool input(String &string, std::ifstream &cin) {
 }
 
 void input(String &string) {
-	const int maxSize = 10;
 	char tmp[maxSize];
 	char curSymbol = 0;
 
@@ -40,7 +40,7 @@ void input(String &string) {
 		string.data[i] = tmp[i];
 }
 
-void output(String &string) {
+void output(String string) {
 	for (int i = 0; i < string.size; i++)
 		std::cout << string.data[i];
 	std::cout << std::endl;

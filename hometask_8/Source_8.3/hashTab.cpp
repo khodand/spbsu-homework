@@ -4,7 +4,7 @@ const int primeArrSize = 15;
 const int primeArr[primeArrSize] = { 141, 4713, 5795, 6611, 18496, 32292, 32469, 59656, 90825,
 							262419, 361275, 481899, 1354828, 6328548, 6679881 };
 
-const int primeMultiplier = 101;
+const int primeMultiplier = 79;
 
 int setSize(int size) {
 	for (int i = 0; i < primeArrSize; ++i) {
@@ -14,17 +14,17 @@ int setSize(int size) {
 	return size;
 }
 
-void resize(hashMap &A) {
+void resize(hashMap &map) {
 	hashMap newMap;
-	newMap.size = setSize(A.size);
+	newMap.size = setSize(map.size);
 	newMap.hashes = new list[newMap.size];
 
-	for (int i = 0; i < A.size; ++i)
-		for (int j = 0; j < A.hashes[i].size; ++j)
-			add(get(j, A.hashes[i]).text, newMap);
+	for (int i = 0; i < map.size; ++i)
+		for (int j = 0; j < map.hashes[i].size; ++j)
+			add(get(j, map.hashes[i]).text, newMap);
 
-	clear(A);
-	A = newMap;
+	clear(map);
+	map = newMap;
 }
 
 int hash(String text, int size) { 
@@ -34,80 +34,82 @@ int hash(String text, int size) {
 
 	int p = primeMultiplier;
 	for (int i = text.size - 2; i >= 0; --i) {
-		result = (result + text.data[i] * (p % size)) % size;
+		result = (result + (text.data[i] * p) % size) % size;
 		p *= p;
+		p %= size;
 	}
 
 	return result;
 }
 
-void add(String text, hashMap &A) {
-	if (A.size == 0) {
-		A.size = primeArr[0];
-		A.hashes = new list[A.size];
+void add(String text, hashMap &map) {
+	if (map.size == 0) {
+		map.size = primeArr[0];
+		map.hashes = new list[map.size];
 	}
 
-	A.used++;
+	map.used++;
 
-	double loadFactor = (double)A.used / A.size;
+	double loadFactor = (double)map.used / map.size;
 	if (loadFactor > 1)
-		resize(A);
+		resize(map);
 
 	wordInfo *newWord = create(text);
-	add(newWord, A.hashes[hash(text, A.size)]);
+	int textHash = hash(text, map.size);
+	add(newWord, map.hashes[textHash]);
 }
 
-int getFrequencyOfWord(String text, hashMap &A) {
-	return getFrequencyOfWord(text, A.hashes[hash(text, A.size)]);
+int getFrequencyOfWord(String text, hashMap &map) {
+	return getFrequencyOfWord(text, map.hashes[hash(text, map.size)]);
 }
 
-int numberOfWords(hashMap &A) {
+int numberOfWords(hashMap &map) {
 	int result = 0;
-	for (int i = 0; i < A.size; ++i) {
-		result += numberOfWords(A.hashes[i]);
+	for (int i = 0; i < map.size; ++i) {
+		result += numberOfWords(map.hashes[i]);
 	}
 	return result;
 }
 
-int numberOfEmptyBuckets(hashMap &A) {
-	return A.size - A.used;
+int numberOfEmptyBuckets(hashMap &map) {
+	return map.size - map.used;
 }
 
-double getLoadFactor(hashMap &A) {
-	return (double)A.used / A.size;
+double getLoadFactor(hashMap &map) {
+	return (double)map.used / map.size;
 }
 
-double getAverageLen(hashMap &A) {
+double getAverageLen(hashMap &map) {
 	double sum = 0.0;
-	for (int i = 0; i < A.size; ++i)
-		sum += A.hashes[i].size;
+	for (int i = 0; i < map.size; ++i)
+		sum += map.hashes[i].size;
 	
-	return sum / A.size;
+	return sum / map.size;
 }
 
-int getMaxLen(hashMap &A) {
+int getMaxLen(hashMap &map) {
 	int maxLen = 0;
-	for (int i = 0; i < A.size; ++i)
-		maxLen < A.hashes[i].size ? maxLen = A.hashes[i].size : maxLen = maxLen;
+	for (int i = 0; i < map.size; ++i)
+		maxLen < map.hashes[i].size ? maxLen = map.hashes[i].size : maxLen = maxLen;
 
 	return maxLen;
 }
 
-void outWholeChain(String text, hashMap &A) {
-	int wordHash = hash(text, A.size);
-	for (int i = 0; i < A.hashes[wordHash].size; ++i)
-		output(get(i, A.hashes[wordHash]).text);
+void outWholeChain(String text, hashMap &map) {
+	int wordHash = hash(text, map.size);
+	for (int i = 0; i < map.hashes[wordHash].size; ++i)
+		output(get(i, map.hashes[wordHash]).text);
 }
 
-void clear(hashMap &A) {
-	for (int i = 0; i < A.size; ++i) {
-		clear(A.hashes[i]);
-		delete[] A.hashes;
-	}
+void clear(hashMap &map) {
+	for (int i = 0; i < map.size; ++i)
+		if (!isEmpty(map.hashes[i]))
+			clear(map.hashes[i]);
+	delete[] map.hashes;
 }
 
-void out(hashMap &A) {
-	for (int i = 0; i < A.size; ++i)
-		for (int j = 0; j < A.hashes[i].size; ++j)
-			output(get(j, A.hashes[i]).text);
+void out(hashMap &map) {
+	for (int i = 0; i < map.size; ++i)
+		for (int j = 0; j < map.hashes[i].size; ++j)
+			output(get(j, map.hashes[i]).text);
 }

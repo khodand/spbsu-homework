@@ -13,7 +13,7 @@ bool areEqual(String &string1, String &string2);
 bool input(String &string, std::ifstream &cin);
 
 void input(String &string);
-void output(String &string);
+void output(String string);
 
 String clone(String &string);
 
