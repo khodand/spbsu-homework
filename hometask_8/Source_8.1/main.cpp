@@ -27,11 +27,14 @@ int main() {
 		matrix[i] = new int[numberOfStudents]{0};
 	}
 
-	cout << "Enter the student number and number which he copied" << endl;
+	cout << "Enter the student number and number which he copied, do not enter first three students" << endl <<
+		"if student hasn't given the work, enter him like \"<number> -1\"" << endl;
 	int a = 0;
 	int b = 0;
-	for (int i = 0; i < numberOfStudents; ++i) {
+	for (int i = 3; i < numberOfStudents; ++i) {
 		cin >> a >> b;
+		if (b == -1)
+			continue;
 		a--; b--;
 		matrix[b][a] = 1;
 	}
@@ -47,6 +50,11 @@ int main() {
 		else
 			cout << i + 1 << " " << students[i] + 1 << endl;
 	}
+
+	delete[] students;
+	for (int i = 0; i < numberOfStudents; ++i)
+		delete[] matrix[i];
+	delete[] matrix;
 
 	return 0;
 }
