@@ -2,15 +2,6 @@
 
 const int error = -2147483646;
 
-void createQueue(Queue &A) {
-	Queue *newQueue = new Queue;
-	newQueue->head = nullptr;
-	newQueue->tail = nullptr;
-
-	A = *newQueue;
-	delete newQueue;
-}
-
 QueueElement* createQueueElement(int value) {
 	QueueElement *newElement = new QueueElement;
 	newElement->next = nullptr;
