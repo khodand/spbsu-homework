@@ -1,6 +1,6 @@
 #pragma once
 #include "queue.h"
 
-int calculate(Queue expression, bool isPostfix = false);
+int calculate(Queue &expression, bool isPostfix = false);
 
-Queue toPostfix(Queue inStr);
+Queue toPostfix(Queue &inStr);

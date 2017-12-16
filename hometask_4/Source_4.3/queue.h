@@ -2,15 +2,14 @@
 
 struct QueueElement {
 	int value;
-	QueueElement *next;
+	QueueElement *next = nullptr;
 };
 
 struct Queue {
-	QueueElement *head;
-	QueueElement *tail;
+	QueueElement *head = nullptr;
+	QueueElement *tail = nullptr;
 };
 
-void createQueue(Queue &queue);
 void clear(Queue &queue);
 
 bool isEmpty(Queue &queue);

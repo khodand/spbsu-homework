@@ -7,7 +7,6 @@ using namespace std;
 
 int main() {
 	Queue inStr;
-	createQueue(inStr);
 
 	cout << "Enter a expression" << endl << "Don't forget to put '=' at the end!!!" << endl;
 

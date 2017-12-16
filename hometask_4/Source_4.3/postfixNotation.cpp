@@ -2,19 +2,16 @@
 #include "stack.h"
 #include "queue.h"
 
-Queue toPostfix(Queue inStr);
-
 bool isDigit(char token) {
 	return token >= '0' && token <= '9';
 }
 
-int calculate(Queue expression, bool isPostfix) {
+int calculate(Queue &expression, bool isPostfix) {
 
 	if (!isPostfix)
 		expression = toPostfix(expression);
 
 	Stack operands;
-	createStack(operands);
 
 	while (!isEmpty(expression)) {
 		char curToken = front(expression);
@@ -61,12 +58,10 @@ int calculate(Queue expression, bool isPostfix) {
 	return result;
 }
 
-Queue toPostfix(Queue inStr) {
+Queue toPostfix(Queue &inStr) {
 	Stack operations;
-	createStack(operations);
-
 	Queue outStr;
-	createQueue(outStr);
+
 
 	while (!isEmpty(inStr)) {
 		char curToken = front(inStr);
