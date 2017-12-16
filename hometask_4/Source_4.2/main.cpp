@@ -4,21 +4,20 @@
 
 using namespace std;
 
+int unsigned const alphabetSize = 256;
+
 int main() {
 	ifstream cin("text.txt");
-	bool *isLetterIn = new bool[256]{ false };
-
-	char curChar;
+	bool *isLetterIn = new bool[alphabetSize]{ false };
 
 	Queue queue;
-	createQueue(queue);
-
+	char curChar = ' ';
 	while (!cin.eof()) {
 		cin.get(curChar);
 
 		if (curChar == ' ') {
 			delete[] isLetterIn;
-			isLetterIn = new bool[256]{ false };
+			isLetterIn = new bool[alphabetSize]{ false };
 			push(queue, curChar);
 			continue;
 		}
@@ -28,12 +27,12 @@ int main() {
 			isLetterIn[curChar] = true;
 		}
 	}
+
 	cin.close();
 
 	while (!isEmpty(queue))
 		cout << (char)pop(queue);
 
 	delete[] isLetterIn;
-	system("pause");
 	return 0;
 }
