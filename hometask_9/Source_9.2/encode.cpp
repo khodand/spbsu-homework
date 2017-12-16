@@ -95,9 +95,9 @@ void encode(ifstream &in, ofstream &out) {
 	
 	Node huffmanTreeRoot = makeTreeFromFreqArr(charFrequensy, arrLen);
 
-	out << "Huffman tree: " << endl;
-	abcOut(&huffmanTreeRoot, out);
-	out << endl;
+	cout << "Huffman tree: " << endl;
+	abcOut(&huffmanTreeRoot);
+	cout << endl;
 
 	string map[alphabetLen];
 	for (int i = 0; i < alphabetLen; ++i)
@@ -106,10 +106,8 @@ void encode(ifstream &in, ofstream &out) {
 
 	dictionaryToConsole(map);
 
-	out << "Encoded text :" << endl;
 	for (int i = 0; i < input.size(); ++i)
 		out << map[input[i]];
-	out << endl;
 
 	clear(huffmanTreeRoot.left);
 	clear(huffmanTreeRoot.right);

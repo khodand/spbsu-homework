@@ -17,6 +17,5 @@ int main() {
 	in.close();
 	out.close();
 
-	system("pause");
 	return 0;
 }
