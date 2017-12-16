@@ -13,7 +13,7 @@ struct SearchTree {
 void add(int value, SearchTree &A);
 void remove(int value, SearchTree &A);
 
-bool isContains(int value, SearchTree &A);
+bool isContained(int value, SearchTree &A);
 bool isEmpty(SearchTree &A);
 
 void increasOut(SearchTree &A);

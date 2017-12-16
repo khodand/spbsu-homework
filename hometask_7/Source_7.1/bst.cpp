@@ -42,10 +42,13 @@ void deleteNode(Node *&p) {
 
 		rightEnd->left = newRoot->right;
 		newRoot->right = p->right;
+		delete p;
 		p = newRoot;
 	}
-	else 
+	else {
+		delete p;
 		p = newRoot;
+	}
 }
 
 void remove(int value, Node *&p) {
@@ -83,7 +86,7 @@ void abcOut(SearchTree &A) {
 	std::cout << std::endl;
 }
 
-bool isContains(int value, Node *p) {
+bool isContained(int value, Node *p) {
 	if (p == nullptr)
 		return false;
 
@@ -91,13 +94,13 @@ bool isContains(int value, Node *p) {
 		return true;
 
 	if (value < p->value)
-		return isContains(value, p->left);
+		return isContained(value, p->left);
 	else
-		return isContains(value, p->right);
+		return isContained(value, p->right);
 }
 
-bool isContains(int value, SearchTree &A) {
-	return isContains(value, A.root);
+bool isContained(int value, SearchTree &A) {
+	return isContained(value, A.root);
 }
 
 void incOut(Node *p) {
@@ -129,11 +132,11 @@ void decreasOut(SearchTree &A) {
 }
 
 void clear(Node *p) {
-	if (p->left != nullptr)
-		clear(p->left);
-	if (p->right != nullptr)
-		clear(p->right);
-	
+	if (p == nullptr)
+		return;
+
+	clear(p->left);
+	clear(p->right);
 	delete p;
 }
 void clear(SearchTree &A) {

@@ -3,6 +3,16 @@
 
 using namespace std;
 
+enum commands {EXIT, INPUT, REMOVE, CONTAINS, DECREAS, INCREAS, ABCPRINT };
+
+istream& operator>>(istream &in, commands &command) {
+	int tmp;
+	if (in >> tmp)
+		command = static_cast<commands>(tmp);
+	return in;
+}
+
+
 int main() {
 	SearchTree bst;
 
@@ -11,41 +21,41 @@ int main() {
 		"5 - print in increasing order" << endl << "6 - print in ABC order";
 
 	cout << endl << "Enter your command to binary search tree: " << endl;
-	int command = 0;
+	commands command = EXIT;
 	cin >> command;
-	while (command != 0) {
+	while (command != EXIT) {
 		int value = 0;
 		switch (command) {
-		case 1:
+		case INPUT:
 			cout << "Input value to add:" << endl;
 			cin >> value;
 			add(value, bst);
 			break;
 
-		case 2:
+		case REMOVE:
 			cout << "Input value to remove:" << endl;
 			cin >> value;
 			remove(value, bst);
 			break;
 
-		case 3:
+		case CONTAINS:
 			cout << "Input value to check:" << endl;
 			cin >> value;
-			if (isContains(value, bst))
+			if (isContained(value, bst))
 				cout << "True" << endl;
 			else
 				cout << "False" << endl;
 			break;
 
-		case 4:
+		case DECREAS:
 			decreasOut(bst);
 			break;
 
-		case 5:
+		case INCREAS:
 			increasOut(bst);
 			break;
 
-		case 6:
+		case ABCPRINT:
 			abcOut(bst);
 			break;
 		}
