@@ -2,14 +2,13 @@
 
 struct StackElement {
 	int value;
-	StackElement* next;
+	StackElement* next = nullptr;
 };
 
 struct Stack {
-	StackElement *top;
+	StackElement *top = nullptr;
 };
 
-void createStack(Stack &stack);
 void clear(Stack &stack);
 
 bool isEmpty(Stack &stack);
