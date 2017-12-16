@@ -30,6 +30,7 @@ int main() {
 
 	cin.close();
 
+	cout << "Your text, each word only the first occurrence of each letter: " << endl;
 	while (!isEmpty(queue))
 		cout << (char)pop(queue);
 
