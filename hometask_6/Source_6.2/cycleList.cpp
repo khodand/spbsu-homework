@@ -1,85 +1,97 @@
 #include "cycleList.h"
 #include <iostream>
 
-void createCycleList(CycleList &A) {
-	CycleList *newList = new CycleList;
-	newList->top = nullptr;
-	newList->last = newList->top;
-	newList->size = 0;
-
-	A = *newList;
-	delete newList;
+bool isEmpty(CycleList &list) {
+	return list.top == nullptr;
 }
 
-bool isEmpty(CycleList &A) {
-	return A.top == nullptr;
-}
-
-void push(int value, CycleList &A) {
-	A.size++;
-	ListEl *newEl = new ListEl;
+void push(int value, CycleList &list) {
+	list.size++;
+	ListElement *newEl = new ListElement;
 	newEl->value = value;
 	newEl->next = nullptr;
 
-	if (!isEmpty(A)) {
-		if (A.top->next != nullptr) {
-			A.last->next = newEl;
-			newEl->next = A.top;
-			A.top = newEl;
+	if (!isEmpty(list)) {
+		if (list.top->next != nullptr) {
+			list.last->next = newEl;
+			newEl->next = list.top;
+			list.top = newEl;
 		}
 		else {
-			A.last = A.top;
-			A.last->next = newEl;
-			A.top = newEl;
-			A.top->next = A.last;
+			list.last = list.top;
+			list.last->next = newEl;
+			list.top = newEl;
+			list.top->next = list.last;
 		}
 	}
 	else {
-		A.top = newEl;
+		list.top = newEl;
 	}
 }
 
-void remove(CycleList &A, int i) {
-	A.size--;
-	ListEl *curEl = A.top;
-	ListEl *prevEl = A.last;
+void remove(CycleList &list, int i) {
+	ListElement *current = list.top;
+	ListElement *previous = list.last;
 	if (i != 0) {
 		while (i > 0) {
-			prevEl = curEl;
-			curEl = curEl->next;
+			previous = current;
+			current = current->next;
 			i--;
 		}
 
-		prevEl->next = curEl->next;
-		curEl = nullptr;
+		previous->next = current->next;
+		delete current;
 	}
 	else {
-		A.last->next = A.top->next;
-		A.top = A.top->next;
+		list.last->next = list.top->next;
+		delete list.top;
+		list.top = list.last->next;
 	}
+	list.size--;
 }
 
-int get(CycleList &A, int i) {
-	ListEl *curEl = A.top;
+int get(CycleList &list, int i) {
+	ListElement *current = list.top;
 	while (i > 0) {
-		curEl = curEl->next;
+		current = current->next;
 		i--;
 	}
 
-	return curEl->value;
+	return current->value;
 }
 
-int getSize(CycleList &A) {
-	return A.size;
+void killEveryK(CycleList &list, int k) {
+	ListElement *current = list.top;
+	ListElement *previous = list.last;
+	while (list.size > 1) {
+		for (int i = 0; i < k; ++i) {
+			previous = current;
+			current = current->next;
+		}
+
+		previous->next = current->next;
+		delete current;
+		current = previous->next;
+
+		list.size--;
+	}
+
+	list.top = current;
+	list.last = current;
 }
 
-void out(CycleList &A, char end) {
-	for (int i = 0; i < A.size; ++i)
-		std::cout << get(A, i) << " ";
+
+int getSize(CycleList &list) {
+	return list.size;
+}
+
+void out(CycleList &list, char end) {
+	for (int i = 0; i < list.size; ++i)
+		std::cout << get(list, i) << " ";
 	std::cout << end;
 }
 
-void clear(CycleList &A) {
-	for (int i = 0; i < A.size; ++i)
-		remove(A, 0);
+void clear(CycleList &list) {
+	for (int i = 0; i < list.size; ++i)
+		remove(list, 0);
 }

@@ -1,23 +1,23 @@
 #pragma once
 
-struct ListEl {
+struct ListElement {
 	int value;
-	ListEl *next;
+	ListElement *next;
 };
 
 struct CycleList {
-	ListEl *top;
-	ListEl *last;
-	int size;
+	ListElement *top = nullptr;
+	ListElement *last = nullptr;
+	int size = 0;
 };
 
-void createCycleList(CycleList &A);
-void clear(CycleList &A);
+void clear(CycleList &list);
 
-void push(int value, CycleList &A);
-void remove(CycleList &A, int i);
+void push(int value, CycleList &list);
+void remove(CycleList &list, int i);
 
-int get(CycleList &A, int i);
-int getSize(CycleList &A);
+int get(CycleList &list, int i);
+int getSize(CycleList &list);
 
-void out(CycleList &A, char end = '\n');
+void killEveryK(CycleList &list, int k);
+void out(CycleList &list, char end = '\n');
