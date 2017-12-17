@@ -8,7 +8,7 @@ bool input(String &string, std::ifstream &cin) {
 
 	int size = 0;
 	cin.get(curSymbol);
-	while (curSymbol != '\n' && curSymbol != ' ' && curSymbol != '$') {
+	while (curSymbol != '\n' && curSymbol != ' ' && !cin.eof()) {
 		tmp[size] = curSymbol;
 		size++;
 		cin.get(curSymbol);
@@ -19,7 +19,7 @@ bool input(String &string, std::ifstream &cin) {
 	for (int i = 0; i < size; ++i)
 		string.data[i] = tmp[i];
 
-	return curSymbol == '$';
+	return cin.eof();
 }
 
 void input(String &string) {

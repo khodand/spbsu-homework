@@ -1,43 +1,43 @@
-#include "list.h"
+#include "List.h"
 
-listEl *create(wordInfo *word) {
-	listEl *newEl = new listEl;
+ListElement *create(WordInfo *word) {
+	ListElement *newEl = new ListElement;
 	newEl->word = word;
 	newEl->next = nullptr;
 
 	return newEl;
 }
 
-bool isWordIn(String text, list &A) {
-	for (int i = 0; i < A.size; ++i) {
-		wordInfo curWord = get(i, A);
+bool isWordIn(String text, List &list) {
+	for (int i = 0; i < list.size; ++i) {
+		WordInfo curWord = get(i, list);
 		if (areEqual(text, curWord.text)) {
-			setNumber(i, A, curWord.number + 1);
+			setNumber(i, list, curWord.number + 1);
 			return true;
 		}
 	}
 	return false;
 }
 
-void add(wordInfo *word, list &A) {
-	if (isEmpty(A)) {
-		A.first = create(word);
-		A.last = A.first;
-		A.size++;
+void add(WordInfo *word, List &list) {
+	if (isEmpty(list)) {
+		list.first = create(word);
+		list.last = list.first;
+		list.size++;
 	}
 	else {
-		if (!isWordIn(word->text, A)) {
-			A.last->next = create(word);
-			A.last = A.last->next;
-			A.size++;
+		if (!isWordIn(word->text, list)) {
+			list.last->next = create(word);
+			list.last = list.last->next;
+			list.size++;
 		}
 		else
 			delete(word);
 	}
 }
 
-wordInfo get(int i, list &A) {
-	listEl *temp = A.first;
+WordInfo get(int i, List &list) {
+	ListElement *temp = list.first;
 	while (i > 0) {
 		temp = temp->next;
 		--i;
@@ -46,8 +46,8 @@ wordInfo get(int i, list &A) {
 	return *temp->word;
 }
 
-void setNumber(int i, list &A, int number) {
-	listEl *temp = A.first;
+void setNumber(int i, List &list, int number) {
+	ListElement *temp = list.first;
 	while (i > 0) {
 		temp = temp->next;
 		--i;
@@ -55,13 +55,13 @@ void setNumber(int i, list &A, int number) {
 	temp->word->number = number;
 }
 
-void remove(int i, list &A) {
+void remove(int i, List &list) {
 	if (i == 0) {
-		deleteWord(A.first->word);
-		A.first = A.first->next;
+		deleteWord(list.first->word);
+		list.first = list.first->next;
 	}
 	else {
-		listEl *temp = A.first;
+		ListElement *temp = list.first;
 		while (i > 1) {
 			temp = temp->next;
 			--i;
@@ -70,31 +70,31 @@ void remove(int i, list &A) {
 		deleteWord(temp->next->word);
 		temp->next = temp->next->next;
 	}
-	A.size--;
+	list.size--;
 }
 
-bool isEmpty(list &A) {
-	return A.first == nullptr;
+bool isEmpty(List &list) {
+	return list.first == nullptr;
 }
 
-void clear(list &A) {
-	while (!isEmpty(A))
-		remove(0, A);
+void clear(List &list) {
+	while (!isEmpty(list))
+		remove(0, list);
 }
 
-int getFrequencyOfWord(String text, list &A) {
-	for (int i = 0; i < A.size; ++i) {
-		wordInfo curWord = get(i, A);
+int getFrequencyOfWord(String text, List &list) {
+	for (int i = 0; i < list.size; ++i) {
+		WordInfo curWord = get(i, list);
 		if (areEqual(text, curWord.text))
 			return curWord.number;
 	}
 	return 0;
 }
 
-int numberOfWords(list &A) {
+int numberOfWords(List &list) {
 	int result = 0;
-	for (int i = 0; i < A.size; ++i) {
-		result += get(i, A).number;
+	for (int i = 0; i < list.size; ++i) {
+		result += get(i, list).number;
 	}
 
 	return result;

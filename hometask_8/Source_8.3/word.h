@@ -1,10 +1,10 @@
 #pragma once
 #include "String.h"
 
-struct wordInfo {
+struct WordInfo {
 	String text;
 	int number;
 };
 
-wordInfo *create(String text);
-void deleteWord(wordInfo  *word);
+WordInfo *create(String text);
+void deleteWord(WordInfo  *word);

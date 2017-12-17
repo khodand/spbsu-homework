@@ -1,26 +1,26 @@
 #pragma once
-#include "list.h"
+#include "List.h"
 
-struct hashMap {
-	list *hashes;
+struct HashMap {
+	List *hashes;
 	
 	int used = 0;
 	int size = 0;
 };
 
-void add(String text, hashMap &A);
+void add(String text, HashMap &A);
 
-int getFrequencyOfWord(String text, hashMap &A);
+int getFrequencyOfWord(String text, HashMap &A);
 
-double getAverageLen(hashMap &A);
-int getMaxLen(hashMap &A);
+double getAverageLen(HashMap &A);
+int getMaxLen(HashMap &A);
 
-void outWholeChain(String word, hashMap &A);
+void outWholeChain(String word, HashMap &A);
 
-int numberOfWords(hashMap &A);
-int numberOfEmptyBuckets(hashMap &A);
-double getLoadFactor(hashMap &A);
+int numberOfWords(HashMap &A);
+int numberOfEmptyBuckets(HashMap &A);
+double getLoadFactor(HashMap &A);
 
-void out(hashMap &A);
-void clear(hashMap &A);
+void out(HashMap &A);
+void clear(HashMap &A);
 

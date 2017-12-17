@@ -14,10 +14,10 @@ int setSize(int size) {
 	return size;
 }
 
-void resize(hashMap &map) {
-	hashMap newMap;
+void resize(HashMap &map) {
+	HashMap newMap;
 	newMap.size = setSize(map.size);
-	newMap.hashes = new list[newMap.size];
+	newMap.hashes = new List[newMap.size];
 
 	for (int i = 0; i < map.size; ++i)
 		for (int j = 0; j < map.hashes[i].size; ++j)
@@ -42,10 +42,10 @@ int hash(String text, int size) {
 	return result;
 }
 
-void add(String text, hashMap &map) {
+void add(String text, HashMap &map) {
 	if (map.size == 0) {
 		map.size = primeArr[0];
-		map.hashes = new list[map.size];
+		map.hashes = new List[map.size];
 	}
 
 	map.used++;
@@ -54,16 +54,16 @@ void add(String text, hashMap &map) {
 	if (loadFactor > 1)
 		resize(map);
 
-	wordInfo *newWord = create(text);
+	WordInfo *newWord = create(text);
 	int textHash = hash(text, map.size);
 	add(newWord, map.hashes[textHash]);
 }
 
-int getFrequencyOfWord(String text, hashMap &map) {
+int getFrequencyOfWord(String text, HashMap &map) {
 	return getFrequencyOfWord(text, map.hashes[hash(text, map.size)]);
 }
 
-int numberOfWords(hashMap &map) {
+int numberOfWords(HashMap &map) {
 	int result = 0;
 	for (int i = 0; i < map.size; ++i) {
 		result += numberOfWords(map.hashes[i]);
@@ -71,15 +71,15 @@ int numberOfWords(hashMap &map) {
 	return result;
 }
 
-int numberOfEmptyBuckets(hashMap &map) {
+int numberOfEmptyBuckets(HashMap &map) {
 	return map.size - map.used;
 }
 
-double getLoadFactor(hashMap &map) {
+double getLoadFactor(HashMap &map) {
 	return (double)map.used / map.size;
 }
 
-double getAverageLen(hashMap &map) {
+double getAverageLen(HashMap &map) {
 	double sum = 0.0;
 	for (int i = 0; i < map.size; ++i)
 		sum += map.hashes[i].size;
@@ -87,7 +87,7 @@ double getAverageLen(hashMap &map) {
 	return sum / map.size;
 }
 
-int getMaxLen(hashMap &map) {
+int getMaxLen(HashMap &map) {
 	int maxLen = 0;
 	for (int i = 0; i < map.size; ++i)
 		maxLen < map.hashes[i].size ? maxLen = map.hashes[i].size : maxLen = maxLen;
@@ -95,20 +95,20 @@ int getMaxLen(hashMap &map) {
 	return maxLen;
 }
 
-void outWholeChain(String text, hashMap &map) {
+void outWholeChain(String text, HashMap &map) {
 	int wordHash = hash(text, map.size);
 	for (int i = 0; i < map.hashes[wordHash].size; ++i)
 		output(get(i, map.hashes[wordHash]).text);
 }
 
-void clear(hashMap &map) {
+void clear(HashMap &map) {
 	for (int i = 0; i < map.size; ++i)
 		if (!isEmpty(map.hashes[i]))
 			clear(map.hashes[i]);
 	delete[] map.hashes;
 }
 
-void out(hashMap &map) {
+void out(HashMap &map) {
 	for (int i = 0; i < map.size; ++i)
 		for (int j = 0; j < map.hashes[i].size; ++j)
 			output(get(j, map.hashes[i]).text);

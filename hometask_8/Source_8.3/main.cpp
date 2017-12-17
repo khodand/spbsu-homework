@@ -5,19 +5,14 @@
 using namespace std;
 
 int main() {
-	hashMap map;
-
-	ofstream fout("Text.txt", ios::app);
-	fout << "$";
-	fout.close();
+	HashMap map;
 
 	ifstream in("Text.txt");
-	bool isEnd = false;
-	while (!isEnd) {
-		String A;
-		isEnd = input(A, in);
-		if (A.size != 0)
-			add(A, map);
+	while (!in.eof()) {
+		String list;
+		input(list, in);
+		if (list.size != 0)
+			add(list, map);
 	}
 	in.close();
 

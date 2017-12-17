@@ -1,25 +1,25 @@
 #pragma once
 #include "word.h"
 
-struct listEl {
-	wordInfo *word = nullptr;
-	listEl *next = nullptr;
+struct ListElement {
+	WordInfo *word = nullptr;
+	ListElement *next = nullptr;
 };
 
-struct list {
-	listEl *first = nullptr;
-	listEl *last = nullptr;
+struct List {
+	ListElement *first = nullptr;
+	ListElement *last = nullptr;
 	int size = 0;
 };
 
-void add(wordInfo *word, list &A);
+void add(WordInfo *word, List &list);
 
-wordInfo get(int i, list &A);
-void setNumber(int i, list &A, int number);
-void remove(int i, list &A);
+WordInfo get(int i, List &list);
+void setNumber(int i, List &list, int number);
+void remove(int i, List &list);
 
-int getFrequencyOfWord(String text, list &A);
-int numberOfWords(list &A);
-bool isEmpty(list &A);
+int getFrequencyOfWord(String text, List &list);
+int numberOfWords(List &list);
+bool isEmpty(List &list);
 
-void clear(list &A);
+void clear(List &list);
