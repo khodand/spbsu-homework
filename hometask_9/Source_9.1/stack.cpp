@@ -2,14 +2,6 @@
 
 const int error = -2147483646;
 
-void createStack(Stack &stack) {
-	Stack *newStack = new Stack;
-	newStack->top = nullptr;
-
-	stack = *newStack;
-	delete newStack;
-}
-
 StackElement* createStackElement(int value) {
 	StackElement *newStackElement = new StackElement;
 
