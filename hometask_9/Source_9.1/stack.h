@@ -2,7 +2,7 @@
 
 struct StackElement {
 	int value;
-	StackElement* next;
+	StackElement* next = nullptr;
 };
 
 struct Stack {
