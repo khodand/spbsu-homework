@@ -37,7 +37,7 @@ void fillMap(string code, Node *p, string *map) {
 void setTextAndFrequensy(string &input, Node *arr, ifstream &in) {
 	char symbol = ' ';
 	in.get(symbol);
-	while (symbol != '$') {
+	while (!in.eof()) {
 		input += symbol;
 
 		arr[symbol % alphabetLen].token.first = symbol;
