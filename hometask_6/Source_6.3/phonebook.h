@@ -6,11 +6,11 @@ struct PhoneBook {
 	List phoneList;
 };
 
-void add(char name[], int number, PhoneBook &A);
+void add(char name[], int number, PhoneBook &list);
 
-int getNumber(char name[], PhoneBook &A);
-char *getName(int number, PhoneBook &A);
+int getNumber(char name[], PhoneBook &list);
+char *getName(int number, PhoneBook &list);
 
-void save(std::ofstream &out, PhoneBook &A);
+void save(std::ofstream &out, PhoneBook &list);
 
-void clear(PhoneBook &A);
+void clear(PhoneBook &list);

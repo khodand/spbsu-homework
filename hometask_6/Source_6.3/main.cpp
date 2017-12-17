@@ -5,6 +5,15 @@
 
 using namespace std;
 
+enum Commands { quit, input, findByName, findByNumber, saveFile };
+
+istream& operator>>(istream &in, Commands &command) {
+	int tmp;
+	if (in >> tmp)
+		command = static_cast<Commands>(tmp);
+	return in;
+}
+
 int main() {
 	PhoneBook myBook;
 	int number = 0;
@@ -21,32 +30,34 @@ int main() {
 	in.close();
 
 	ofstream out("Text.txt");
+	save(out, myBook);
+
 	cout << "0 - exit" << endl << "1 - add an entry (name and phone number)" << endl << "2 - find number bu name" <<
 		endl << "3 - find name by number" << endl << "4 - save the current data to a file" << endl;
 
 	cout << endl << "Enter your command to phonebook: " << endl;
-	int command = 0;
+	Commands command = quit;
 	cin >> command;
-	while (command != 0) {
+	while (command != quit) {
 		char *name;
 		switch (command) {
-		case 1:
+		case input:
 			name = inputName();
 			number = inputNumber();
 			add(name, number, myBook);
 			break;
 
-		case 2:
+		case findByName:
 			name = inputName();
 			cout << getNumber(name, myBook) << endl;
 			break;
 
-		case 3:
+		case findByNumber:
 			number = inputNumber();
 			cout << getName(number, myBook) << endl;
 			break;
 
-		case 4:
+		case saveFile:
 			save(out, myBook);
 			break;
 		}

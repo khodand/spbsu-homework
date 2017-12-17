@@ -1,22 +1,22 @@
 #pragma once
 #include "person.h"
 
-struct ListEl {
+struct ListElement {
 	Person *account;
-	ListEl *next;
+	ListElement *next;
 };
 
 struct List {
-	ListEl *first = nullptr;
-	ListEl *last = nullptr;
+	ListElement *first = nullptr;
+	ListElement *last = nullptr;
 	int size = 0;
 };
 
-void add(Person *account, List &A);
+void add(Person *account, List &list);
 
-Person get(int i, List &A);
-void remove(int i, List &A);
+Person get(int i, List &list);
+void remove(int i, List &list);
 
-bool isEmpty(List &A);
+bool isEmpty(List &list);
 
-void clear(List &A);
+void clear(List &list);

@@ -4,20 +4,20 @@
 
 int unsigned const maxNameLenght = 50;
 
-bool isEqual(char *A, char *B) {
+bool isEqual(char *list, char *B) {
 	for (int i = 0; i < maxNameLenght; ++i) 
-		if (A[i] != B[i])
+		if (list[i] != B[i])
 			return false;
 	return true;
 }
 
-void add(char name[], int number, PhoneBook &A) {
-	add(create(name, number), A.phoneList);
+void add(char name[], int number, PhoneBook &list) {
+	add(create(name, number), list.phoneList);
 }
 
-int getNumber(char name[], PhoneBook &A) {
-	for (int i = 0; i < A.phoneList.size; ++i) {
-		Person curPerson = get(i, A.phoneList);
+int getNumber(char name[], PhoneBook &list) {
+	for (int i = 0; i < list.phoneList.size; ++i) {
+		Person curPerson = get(i, list.phoneList);
 
 		if (isEqual(curPerson.name, name))
 			return curPerson.number;
@@ -25,9 +25,9 @@ int getNumber(char name[], PhoneBook &A) {
 	return -1;
 }
 
-char *getName(int number, PhoneBook &A) {
-	for (int i = 0; i < A.phoneList.size; ++i) {
-		Person curPerson = get(i, A.phoneList);
+char *getName(int number, PhoneBook &list) {
+	for (int i = 0; i < list.phoneList.size; ++i) {
+		Person curPerson = get(i, list.phoneList);
 
 		if (curPerson.number == number)
 			return curPerson.name;
@@ -35,14 +35,14 @@ char *getName(int number, PhoneBook &A) {
 	return "No such name";
 }
 
-void save(std::ofstream &out, PhoneBook &A) {
-	out << A.phoneList.size << std::endl;
-	for (int i = 0; i < A.phoneList.size; ++i) {
-		Person curPerson = get(i, A.phoneList);
+void save(std::ofstream &out, PhoneBook &list) {
+	out << list.phoneList.size << std::endl;
+	for (int i = 0; i < list.phoneList.size; ++i) {
+		Person curPerson = get(i, list.phoneList);
 		out << curPerson.name << " " << curPerson.number << std::endl;
 	}
 }
 
-void clear(PhoneBook &A) {
-	clear(A.phoneList);
+void clear(PhoneBook &list) {
+	clear(list.phoneList);
 }

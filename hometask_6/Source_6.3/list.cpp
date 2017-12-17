@@ -1,28 +1,28 @@
 #include "list.h"
 
-ListEl *create(Person *account) {
-	ListEl *newEl = new ListEl;
-	newEl->account = account;
-	newEl->next = nullptr;
+ListElement *create(Person *account) {
+	ListElement *newElement = new ListElement;
+	newElement->account = account;
+	newElement->next = nullptr;
 
-	return newEl;
+	return newElement;
 }
 
-void add(Person *account, List &A) {
-	if (isEmpty(A)) {
-		A.first = create(account);
-		A.last = A.first;
+void add(Person *account, List &list) {
+	if (isEmpty(list)) {
+		list.first = create(account);
+		list.last = list.first;
 	}
 	else {
-		A.last->next = create(account);
-		A.last = A.last->next;
+		list.last->next = create(account);
+		list.last = list.last->next;
 	}
 
-	A.size++;
+	list.size++;
 }
 
-Person get(int i, List &A) {
-	ListEl *temp = A.first;
+Person get(int i, List &list) {
+	ListElement *temp = list.first;
 	while (i > 0) {
 		temp = temp->next;
 		--i;
@@ -31,13 +31,13 @@ Person get(int i, List &A) {
 	return *temp->account;
 }
 
-void remove(int i, List &A) {
+void remove(int i, List &list) {
 	if (i == 0) {
-		deletePerson(A.first->account);
-		A.first = A.first->next;
+		deletePerson(list.first->account);
+		list.first = list.first->next;
 	}
 	else {
-		ListEl *temp = A.first;
+		ListElement *temp = list.first;
 		while (i > 1) {
 			temp = temp->next;
 			--i;
@@ -46,14 +46,14 @@ void remove(int i, List &A) {
 		deletePerson(temp->next->account);
 		temp->next = temp->next->next;
 	}
-	A.size--;
+	list.size--;
 }
 
-bool isEmpty(List &A) {
-	return A.first == nullptr;
+bool isEmpty(List &list) {
+	return list.first == nullptr;
 }
 
-void clear(List &A) {
-	while (!isEmpty(A))
-		remove(0, A);
+void clear(List &list) {
+	while (!isEmpty(list))
+		remove(0, list);
 }
