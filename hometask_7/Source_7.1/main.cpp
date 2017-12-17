@@ -3,7 +3,7 @@
 
 using namespace std;
 
-enum Commands {exit, input, remove, contains, decreasPrint, increasPrint, abcPrint };
+enum Commands {quit, input, erase, contains, decreasPrint, increasPrint, abcPrint };
 
 istream& operator>>(istream &in, Commands &command) {
 	int tmp;
@@ -21,9 +21,9 @@ int main() {
 		"5 - print in increasing order" << endl << "6 - print in ABC order";
 
 	cout << endl << "Enter your command to binary search tree: " << endl;
-	Commands command = exit;
+	Commands command = quit;
 	cin >> command;
-	while (command != exit) {
+	while (command != quit) {
 		int value = 0;
 		switch (command) {
 		case input:
@@ -32,7 +32,7 @@ int main() {
 			add(value, bst);
 			break;
 
-		case remove:
+		case erase:
 			cout << "Input value to remove:" << endl;
 			cin >> value;
 			remove(value, bst);
