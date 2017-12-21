@@ -5,10 +5,6 @@
 using namespace std;
 
 int main() {
-	//ofstream end("input.txt", ios::app);
-	//end << '$';
-	//end.close();
-
 	ifstream in("input.txt");
 	ofstream out("output.txt");
 

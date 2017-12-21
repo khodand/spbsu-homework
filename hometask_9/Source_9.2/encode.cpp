@@ -95,9 +95,8 @@ void encode(ifstream &in, ofstream &out) {
 	
 	Node huffmanTreeRoot = makeTreeFromFreqArr(charFrequensy, arrLen);
 
-	cout << "Huffman tree: " << endl;
-	abcOut(&huffmanTreeRoot);
-	cout << endl;
+	abcOut(&huffmanTreeRoot, out);
+	out << endl;
 
 	string map[alphabetLen];
 	for (int i = 0; i < alphabetLen; ++i)
