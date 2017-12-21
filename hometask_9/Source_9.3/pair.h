@@ -3,7 +3,7 @@
 #include <fstream>
 
 struct Pair {
-	char first;
+	char first = 0;
 	int second = 0;
 };
 

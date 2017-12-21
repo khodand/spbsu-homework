@@ -37,14 +37,15 @@ void fillMap(string code, Node *p, string *map) {
 void setTextAndFrequensy(string &input, Node *arr, ifstream &in) {
 	char symbol = ' ';
 	in.get(symbol);
-	while (symbol != '$') {
+	while (!in.eof()) {
 		input += symbol;
 
-		arr[symbol % alphabetLen].token.first = symbol;
-		arr[symbol % alphabetLen].token.second++;
-		arr[symbol % alphabetLen].left = nullptr;
-		arr[symbol % alphabetLen].right = nullptr;
-		reweigh(&arr[symbol % alphabetLen]);
+		int reducedSymbol = symbol % alphabetLen;
+		arr[reducedSymbol].token.first = symbol;
+		arr[reducedSymbol].token.second++;
+		arr[reducedSymbol].left = nullptr;
+		arr[reducedSymbol].right = nullptr;
+		reweigh(&arr[reducedSymbol]);
 
 		in.get(symbol);
 	}
@@ -106,25 +107,8 @@ Node* encode(ifstream &in, ofstream &out) {
 		out << map[input[i]];
 	out << endl;
 
+	clear(huffmanTreeRoot.left);
+	clear(huffmanTreeRoot.right);
 	return &huffmanTreeRoot;
 }
 
-bool codeToSymbol(Node *p, ifstream &in, ofstream &out) {
-	if (p->token.first != 0) {
-		out << p->token.first;
-		return true;
-	}
-	char curSymbol = ' ';
-	in.get(curSymbol);
-	if (curSymbol == '1')
-		return codeToSymbol(p->right, in, out);
-	if (curSymbol == '0')
-		return codeToSymbol(p->left, in, out);
-	return false;
-}
-
-void decode(Node *root, ifstream &in, ofstream &out) {
-	out << "Decoded message: " << endl;
-	while (codeToSymbol(root, in, out));
-	out << endl;
-}

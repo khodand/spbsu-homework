@@ -8,3 +8,5 @@ const int alphabetLen = 256;
 
 Node* encode(std::ifstream &in, std::ofstream &out);
 void decode(Node *root, std::ifstream &in, std::ofstream &out);
+
+Node* fillTreeFromABC(std::ifstream &in);
