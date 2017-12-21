@@ -1,6 +1,6 @@
 #include <iostream>
 #include "qsort.h"
-#include "myString.h"
+//#include "myString.h"
 
 using namespace std;
 
@@ -12,7 +12,7 @@ int main() {
 	cout << "Enter your number: " << endl;
 	cin >> number;
 
-	int *digits = new int[30];
+	int digits[30];
 	digits[0] = number % 10;
 
 	int numberOfDigits = 1;
@@ -24,12 +24,16 @@ int main() {
 
 	qsort(digits, 0, numberOfDigits - 1);
 
-	cout << "Min from such digits: ";
-	for (int i = 0; i < numberOfDigits; ++i)
-		if (digits[i] != 0)
-			cout << digits[i];
-	cout << endl;
+	cout << "Min from such digits: " << endl;
+	
+	int firstNonZero = 0;
+	while (digits[firstNonZero++] == 0);
+	cout << digits[--firstNonZero];
 
-	delete[] digits;
+	for (int i = 0; i < firstNonZero; ++i)
+			cout << digits[i];
+	for (int i = firstNonZero + 1; i < numberOfDigits; ++i)
+		cout << digits[i];
+
 	return 0;
 }
