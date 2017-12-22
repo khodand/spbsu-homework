@@ -1,4 +1,4 @@
-#include "List.h"
+#include "list.h"
 
 ListElement *create(WordInfo *word) {
 	ListElement *newEl = new ListElement;
