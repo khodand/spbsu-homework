@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include "stack.h"
 #include "cell.h"
 
 using namespace std;
@@ -10,13 +9,10 @@ int heuristicDist(Cell a, Cell b) {
 }
 
 void pathOut(int start, int goal, Cell *cellArr, int **grid, int abscissa, int ordinate) {
-	Stack path;
-	push(path, goal);
 	for (int j = goal; j != start; j = cellArr[j].prev) {
 		grid[cellArr[j].y][cellArr[j].x] = '*';
 		if (j == cellArr[j].prev)
 			break;
-		push(path, cellArr[j].prev);
 	}
 
 	for (int i = 0; i < ordinate; ++i) {
