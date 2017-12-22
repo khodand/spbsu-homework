@@ -14,7 +14,10 @@ int main() {
 	cout << "Indices of the occurrences of a substring: " << endl;
 	outSubstrIndex(inStr, toFind);
 
+<<<<<<< HEAD
 	clear(inStr);
 	clear(toFind);
+=======
+>>>>>>> 030b7a5531d6bd86fdf9ccbc353efe332ca531d0
 	return 0;
 }
