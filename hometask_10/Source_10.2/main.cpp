@@ -14,6 +14,7 @@ int main() {
 	cout << "Indices of the occurrences of a substring: " << endl;
 	outSubstrIndex(inStr, toFind);
 
-	system("pause");
+	clear(inStr);
+	clear(toFind);
 	return 0;
 }

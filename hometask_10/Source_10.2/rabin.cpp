@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int const primeMultiplier = 257;
+int const primeMultiplier = 255;
 int const limit = 10 * 1000 * 1000 + 19;
 
 bool isEqualSubstring(String text, String substr, int from) {
