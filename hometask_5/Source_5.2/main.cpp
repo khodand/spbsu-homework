@@ -1,49 +1,45 @@
 #include <iostream>
+#include <stdio.h>
 
 using namespace std;
 
-void outInBin(int value) {
-	int temp = 1;
-	int digitsNum = 1;
-	bool sign = true;
+void outBinary(const int unsigned x) {
+	int unsigned bit = 0x800000;
+	while (bit) {
+		if (x & bit)
+			cout << "1";
+		else
+			cout << "0";
 
-	if (value < 0) {
-		value *= -1;
-		sign = false;
+		bit >>= 1;
 	}
-
-	while ((temp << digitsNum++) <= value);
-
-	bool *binValue = new bool[--digitsNum];
-	for (int i = 0; i < digitsNum; ++i) {
-		binValue[i] = value & 1;
-		value = value >> 1;
-	}
-
-	if (!sign)
-		cout << '-';
-	for (int i = digitsNum - 1; i >= 0; --i)
-		cout << binValue[i];
 	cout << endl;
 }
 
 int main() {
-	int term1 = 0;
-	int term2 = 0;
+	int first = 0;
+	int second = 0;
 
-	cout << "Enter first and second terms: " << endl;
-	cin >> term1 >> term2;
+	cout << "Write two numbers: " << endl;
+	cin >> first >> second;
 
-	cout << "First term: ";
-	outInBin(term1);
-	cout << "Second term: ";
-	outInBin(term2);
+	int unsigned absFirst = first;
+	int unsigned absSecond = second;
 
-	int sum = term1 + term2;
-	cout << "Sum in binary notation:";
-	outInBin(sum);
-	cout << "Sum in decimal notation:" << sum << endl;
+	cout << "Numbers in binary: " << endl;
+	outBinary(absFirst);
+	outBinary(absSecond);
 
-	system("pause");
+	cout << "Sum in binary: " << endl;
+	int unsigned sum = absFirst + absSecond;
+	outBinary(sum);
+
+	cout << "Decimal sum: " << endl;
+	bool bit = (sum & 0x80000000);
+	int decimalSum = (bit ? (~sum) + 1 : sum);
+	if (bit)
+		cout << "-";
+	cout << decimalSum;
+
 	return 0;
 }
