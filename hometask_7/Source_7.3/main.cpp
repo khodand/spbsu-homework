@@ -11,7 +11,8 @@ int main() {
 	fillSubTree(tree.root, in);
 	in.close();
 
-	cout << countSubTree(tree.root);
+	abcOut(tree.root);
+	cout << endl <<countSubTree(tree.root);
 	
 	clear(tree.root);
 	return 0;

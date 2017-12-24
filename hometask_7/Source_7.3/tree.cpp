@@ -16,17 +16,31 @@ bool isDigit(char token) {
 void fillSubTree(Operand *&p, std::ifstream &in) {
 	p = new Operand;
 
-	getNextToken(in); // readed '('
+	p->token = getNextToken(in); // readed '(' or digit
 
-	p->token = getNextToken(in);
 	if (!isDigit(p->token)) {
+		p->token = getNextToken(in);
 		fillSubTree(p->left, in);
 		fillSubTree(p->right, in);
-	}
 
-	getNextToken(in); // readed ')'
+		getNextToken(in); // readed ')'
+	}
 }
 
+void abcOut(Operand *p) {
+	if (p != nullptr) {
+		if (isDigit(p->token))
+			std::cout << " " << p->token;
+		else {
+			std::cout << " (" << p->token;
+			abcOut(p->left);
+			abcOut(p->right);
+			std::cout << ")";
+		}
+	}
+	else
+		std::cout << " NULL";
+}
 
 int countSubTree(Operand *p) {
 	if (p == nullptr)

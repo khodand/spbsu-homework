@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <fstream>
 
 struct Operand {
@@ -14,5 +15,7 @@ struct OperandTree {
 
 void fillSubTree(Operand *&p, std::ifstream &in); 
 int countSubTree(Operand *p);
+
+void abcOut(Operand *p);
 
 void clear(Operand *p);
