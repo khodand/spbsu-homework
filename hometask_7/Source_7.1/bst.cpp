@@ -34,6 +34,12 @@ void add(int value, SearchTree &A) {
 // the left subtree into root
 void deleteNode(Node *&p) {
 	Node *newRoot = p->left;
+	if (newRoot == nullptr) {
+		newRoot = p->right;
+		delete p;
+		p = newRoot;
+		return;
+	}
 
 	if (p->right != nullptr) {
 		Node *rightEnd = p->right;
