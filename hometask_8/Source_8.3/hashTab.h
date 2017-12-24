@@ -1,5 +1,5 @@
 #pragma once
-#include "List.h"
+#include "list.h"
 
 struct HashMap {
 	List *hashes;
