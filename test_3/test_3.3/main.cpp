@@ -22,22 +22,16 @@ States nextState(States curState, char symbol) {
 		return error;
 
 	case followingSymbolsState:
-		if (isDigit(symbol))
-			return followingSymbolsState;
-		if (isLetter(symbol))
-			return followingSymbolsState;
-		if (symbol == '_')
+		if (isDigit(symbol) || isLetter(symbol) || symbol == '_')
 			return followingSymbolsState;
 		return error;
 
 	default:
 		return error;
 	}
-
-
 }
 
-bool isDouble(char *input) {
+bool isCorrectString(char *input) {
 	int i = 0;
 	States curState = firstLetterState;
 	while (input[i] != ' ') {
@@ -46,7 +40,7 @@ bool isDouble(char *input) {
 			return false;
 	}
 
-	return curState == firstLetterState || curState == followingSymbolsState;
+	return input[0] != ' ' && (curState == firstLetterState || curState == followingSymbolsState);
 }
 
 int main() {
@@ -62,7 +56,8 @@ int main() {
 	}
 	input[i] = ' ';
 
-	if (isDouble(input))
+
+	if (isCorrectString(input))
 		cout << "Correct string";
 	else
 		cout << "Incorrect string";
