@@ -38,7 +38,8 @@ int beautify(int *coefficients, char *upper, char *lower, int deg) {
 		if (coefficients[i] == 0)
 			continue;
 
-		coefficients[i] > 0 ? putSign(lower, '+', rowIndex) : putSign(lower, '-', rowIndex);
+		if (i != 0 || coefficients[i] < 0)
+			coefficients[i] > 0 ? putSign(lower, '+', rowIndex) : putSign(lower, '-', rowIndex);
 		if (coefficients[i] != 1)
 			putToRow(lower, coefficients[i], rowIndex);
 
