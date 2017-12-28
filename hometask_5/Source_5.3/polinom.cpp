@@ -40,11 +40,10 @@ int beautify(int *coefficients, char *upper, char *lower, int deg) {
 
 		if (i != 0 || coefficients[i] < 0)
 			coefficients[i] > 0 ? putSign(lower, '+', rowIndex) : putSign(lower, '-', rowIndex);
-		if (coefficients[i] != 1)
-			putToRow(lower, coefficients[i], rowIndex);
-
 
 		int curDeg = deg - i - 1;
+		if (coefficients[i] != 1 && coefficients[i] != -1 || curDeg == 0)
+			putToRow(lower, coefficients[i], rowIndex);
 
 		if (curDeg > 0) {
 			lower[rowIndex++] = 'x';
