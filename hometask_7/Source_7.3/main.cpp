@@ -12,7 +12,7 @@ int main() {
 	in.close();
 
 	abcOut(tree.root);
-	cout << endl <<countSubTree(tree.root);
+	cout << endl << "Result of your expression: " << countSubTree(tree.root);
 	
 	clear(tree.root);
 	return 0;
