@@ -14,6 +14,8 @@ void pathOut(int start, int goal, Cell *cellArr, int **grid, int abscissa, int o
 		if (j == cellArr[j].prev)
 			break;
 	}
+	grid[cellArr[start].y][cellArr[start].x] = 'A';
+	grid[cellArr[goal].y][cellArr[goal].x] = 'B';
 
 	for (int i = 0; i < ordinate; ++i) {
 		for (int j = 0; j < abscissa; ++j) {
@@ -21,9 +23,14 @@ void pathOut(int start, int goal, Cell *cellArr, int **grid, int abscissa, int o
 				cout << (char)grid[i][j];
 			else
 				cout << grid[i][j];
+			cout << ' ';
 		}
 		cout << endl;
 	}
+}
+
+bool areCorrect(int start, int goal, Cell *cellArr) {
+	return !cellArr[start].isBlocked && !cellArr[goal].isBlocked;
 }
 
 int main() {
@@ -81,7 +88,10 @@ int main() {
 		relaxDirections(cellArr[minDistV], abscissa, ordinate, cellArr);
 	}
 
-	pathOut(start, goal, cellArr, grid, abscissa, ordinate);
+	if (areCorrect(start, goal, cellArr))
+		pathOut(start, goal, cellArr, grid, abscissa, ordinate);
+	else
+		cout << "Incorrect input (blocked cells)";
 
 	delete[] cellArr;
 	for (int i = 0; i < ordinate; ++i)
