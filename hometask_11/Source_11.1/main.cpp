@@ -13,7 +13,7 @@ bool isDigit(char symbol) {
 States nextState(States curState, char symbol) {
 	switch (curState) {
 	case initalState:
-		if (isDigit(symbol))
+		if (symbol == '-' || symbol == '+' || isDigit(symbol))
 			return intState;
 		return error;
 
@@ -22,6 +22,8 @@ States nextState(States curState, char symbol) {
 			return intState;
 		if (symbol == '.')
 			return pointState;
+		if (symbol == 'E')
+			return EState;
 		return error;
 
 	case pointState:
@@ -39,6 +41,8 @@ States nextState(States curState, char symbol) {
 	case EState:
 		if (symbol == '+' || symbol == '-')
 			return expSignState;
+		if (isDigit(symbol))
+			return expState;
 		return error;
 
 	case expSignState:
