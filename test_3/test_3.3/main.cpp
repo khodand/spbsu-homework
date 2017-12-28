@@ -1,50 +1,71 @@
 #include <iostream>
-#include <fstream>
-#include "queue.h"
 
 using namespace std;
 
-void bfs(int v, int **matrix, int size, Queue &nextV, bool *used) {
-	cout << v << " ";
-	used[v] = true;
+int unsigned const maxSize = 120;
 
-	for (int i = 0; i < v; ++i)
-		if (matrix[v][i] != 0 && !used[i])
-			push(nextV, i);
-	for (int i = v + 1; i < size; ++i)
-		if (matrix[v][i] != 0 && !used[i])
-			push(nextV, i);
+enum States { firstLetterState, followingSymbolsState, error };
 
-	while (!isEmpty(nextV))
-		bfs(pop(nextV), matrix, size, nextV, used);
+bool isDigit(char symbol) {
+	return symbol >= '0' && symbol <= '9';
+}
+
+bool isLetter(char symbol) {
+	return (symbol >= 'a' && symbol <= 'z') || (symbol >= 'A' && symbol <= 'Z');
+}
+
+States nextState(States curState, char symbol) {
+	switch (curState) {
+	case firstLetterState:
+		if (isLetter(symbol))
+			return followingSymbolsState;
+		return error;
+
+	case followingSymbolsState:
+		if (isDigit(symbol))
+			return followingSymbolsState;
+		if (isLetter(symbol))
+			return followingSymbolsState;
+		if (symbol == '_')
+			return followingSymbolsState;
+		return error;
+
+	default:
+		return error;
+	}
+
+
+}
+
+bool isDouble(char *input) {
+	int i = 0;
+	States curState = firstLetterState;
+	while (input[i] != ' ') {
+		curState = nextState(curState, input[i++]);
+		if (curState == error)
+			return false;
+	}
+
+	return curState == firstLetterState || curState == followingSymbolsState;
 }
 
 int main() {
-	ifstream in("input.txt");
-	int size = 0;
-	in >> size;
-
-	bool *used = new bool[size];
-	int **matrix = new int*[size];
-	for (int i = 0; i < size; ++i) {
-		used[i] = false;
-		matrix[i] = new int[i] {0};
+	char input[maxSize];
+	cout << "Enter your string: " << endl;
+	
+	char curSymbol = ' ';
+	cin.get(curSymbol);
+	int i = 0;
+	while (curSymbol != ' ' && curSymbol != '\n') {
+		input[i++] = curSymbol;
+		cin.get(curSymbol);
 	}
+	input[i] = ' ';
 
-	for (int i = 0; i < size; ++i)
-		for (int j = 0; j < size; ++j)
-			in >> matrix[i][j];
-	in.close();
-
-	Queue nextVertex;
-	for (int i = 0; i < size; ++i)
-		if (!used[i])
-			bfs(i, matrix, size, nextVertex, used);
-
-	delete[] used;
-	for (int i = 0; i < size; ++i)
-		delete[] matrix[i];
-	delete[] matrix;
+	if (isDouble(input))
+		cout << "Correct string";
+	else
+		cout << "Incorrect string";
 
 	return 0;
 }
