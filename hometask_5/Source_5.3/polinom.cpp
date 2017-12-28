@@ -39,12 +39,16 @@ int beautify(int *coefficients, char *upper, char *lower, int deg) {
 			continue;
 
 		coefficients[i] > 0 ? putSign(lower, '+', rowIndex) : putSign(lower, '-', rowIndex);
-		putToRow(lower, coefficients[i], rowIndex);
+		if (coefficients[i] != 1)
+			putToRow(lower, coefficients[i], rowIndex);
+
 
 		int curDeg = deg - i - 1;
+
 		if (curDeg > 0) {
 			lower[rowIndex++] = 'x';
-			putToRow(upper, curDeg, rowIndex);
+			if (curDeg != 1)
+				putToRow(upper, curDeg, rowIndex);
 		}
 	}
 	return rowIndex;
