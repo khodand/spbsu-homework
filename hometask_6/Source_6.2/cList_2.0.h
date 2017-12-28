@@ -1,17 +1,16 @@
 #pragma once
+#include <iostream>
 
 struct ListElement {
 	int value;
-	ListElement *next;
+	ListElement *next = nullptr;
+	ListElement *prev = nullptr;
 };
 
 struct CycleList {
-	ListElement *top = nullptr;
-	ListElement *last = nullptr;
+	ListElement *current = nullptr;
 	int size = 0;
 };
-
-void clear(CycleList &list);
 
 void push(int value, CycleList &list);
 void remove(CycleList &list, int i);
@@ -19,5 +18,8 @@ void remove(CycleList &list, int i);
 int get(CycleList &list, int i);
 int getSize(CycleList &list);
 
-void killEveryK(CycleList &list, int k);
-void out(CycleList &list, char end = '\n');
+bool isEmpty(CycleList list);
+
+void out(CycleList &list, int add = 0);
+
+void clear(CycleList &list);

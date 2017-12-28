@@ -1,5 +1,5 @@
 #include <iostream>
-#include "cycleList.h"
+#include "Clist_2.0.h"
 
 using namespace std;
 
@@ -11,13 +11,19 @@ int main() {
 	cout << "Enter number of warriors and killing index:" << endl;
 	cin >> number >> killingIndex;
 
-	for (int i = number - 1; i >= 0; --i)
+	for (int i = 0; i < number; ++i)
 		push(i, warriorsCircle);
 
-	killEveryK(warriorsCircle, killingIndex - 1);
+	get(warriorsCircle, 1);
+	out(warriorsCircle, 1);
+
+	while (warriorsCircle.size != 1) {
+		remove(warriorsCircle, killingIndex - 1);
+		out(warriorsCircle, 1);
+	}
 
 	cout << "Joseph should stay on position with number: ";
-	out(warriorsCircle);
+	out(warriorsCircle, 1);
 
 	clear(warriorsCircle);
 	return 0;
