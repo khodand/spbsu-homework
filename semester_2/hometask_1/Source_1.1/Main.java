@@ -7,12 +7,15 @@ public class Main {
         for (int i = 0; i < 10; ++i) {
             list.add(i);
         }
+        
         for (int i = 0; i < 10; ++i) {
             System.out.print(list.get(i));
         }
+        
         System.out.println();
         list.remove(0);
         list.remove(3);
+        
         for (int i = 0; i < 10; ++i) {
             System.out.print(list.get(i));
         }
