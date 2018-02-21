@@ -9,11 +9,11 @@ public class StackElement {
         this.next = next;
     }
 
-    int getValue() {
+    public int getValue() {
         return value;
     }
 
-    StackElement getNext() {
+    public StackElement getNext() {
         return next;
     }
 }
