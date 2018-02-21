@@ -23,27 +23,27 @@ public class List {
         ListElement cur = this.first;
         ListElement prev = cur;
         if (i == 0) {
-            this.first = this.first.next;
+            this.first = this.first.getNext();
             return;
         }
 
-        while(i != 0) {
+        while (i != 0) {
             if (cur == null)
                 return;
             prev = cur;
-            cur = cur.next;
+            cur = cur.getNext();
             i--;
         }
-        prev.next = cur.next;
+        prev.setNext(cur.getNext());
     }
 
     public int get(int i){
         ListElement cur = this.first;
-        while(i != 0 && cur.next != null) {
-            cur = cur.next;
+        while (i != 0 && cur.getNext() != null) {
+            cur = cur.getNext();
             i--;
         }
 
-        return cur.value;
+        return cur.getValue();
     }
 }
