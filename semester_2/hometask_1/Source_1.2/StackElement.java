@@ -1,11 +1,19 @@
 package com.group144.khodko;
 
 public class StackElement {
-    int value;
-    StackElement next;
+    private int value;
+    private StackElement next;
 
     StackElement(int value, StackElement next) {
         this.value = value;
         this.next = next;
+    }
+
+    int getValue() {
+        return value;
+    }
+
+    StackElement getNext() {
+        return next;
     }
 }
