@@ -13,13 +13,13 @@ public class Stack {
         head = new StackElement(value, head);
     }
 
-    public int pop(){
-        int result = head.value;
-        head = head.next;
+    public int pop() {
+        int result = head.getValue();
+        head = head.getNext();
         return result;
     }
 
     public int top() {
-        return head.value;
+        return head.getValue();
     }
 }
