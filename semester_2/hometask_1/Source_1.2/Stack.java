@@ -33,6 +33,8 @@ public class Stack {
     }
 
     public int top() {
+        if (head == null)
+            return -404;
         return head.value;
     }
 }
