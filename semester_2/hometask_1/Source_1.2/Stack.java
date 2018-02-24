@@ -1,7 +1,18 @@
 package com.group144.khodko;
 
 public class Stack {
-    private StackElement head;
+
+    private class StackElement {
+        int value;
+        StackElement next;
+
+        StackElement(int value, StackElement next) {
+            this.value = value;
+            this.next = next;
+        }
+    }
+
+    private StackElement head = null;
 
     Stack() { }
 
@@ -14,12 +25,14 @@ public class Stack {
     }
 
     public int pop() {
-        int result = head.getValue();
-        head = head.getNext();
+        if (head == null)
+            return -404;
+        int result = head.value;
+        head = head.next;
         return result;
     }
 
     public int top() {
-        return head.getValue();
+        return head.value;
     }
 }
