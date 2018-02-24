@@ -1,49 +1,70 @@
 package com.group144.khodko;
 
 public class List {
-    private ListElement first;
 
-    List() {
-        this.first = null;
+    private class ListElement {
+        int value;
+        ListElement next;
+
+        ListElement() { }
+
+        ListElement(int value, ListElement next) {
+            this.next = next;
+            this.value = value;
+        }
     }
 
+    private ListElement first = null;
+    private int size = 0;
+
+    List() { }
+
     List(int value) {
-        this.first = new ListElement(value, null);
+        first = new ListElement(value, null);
+        size = 1;
     }
 
     List(ListElement first) {
         this.first = first;
+        size = 1;
     }
 
     public void add(int value) {
-        this.first = new ListElement(value, this.first);
+        first = new ListElement(value, first);
+        size++;
     }
 
     public void remove(int i) {
-        ListElement cur = this.first;
+        if (i >= size || i < 0)
+            return;
+
+        size--;
+        ListElement cur = first;
         ListElement prev = cur;
         if (i == 0) {
-            this.first = this.first.getNext();
+            first = first.next;
             return;
         }
 
         while (i != 0) {
-            if (cur == null)
-                return;
             prev = cur;
-            cur = cur.getNext();
+            cur = cur.next;
             i--;
         }
-        prev.setNext(cur.getNext());
+        prev.next = cur.next;
     }
 
     public int get(int i){
-        ListElement cur = this.first;
-        while (i != 0 && cur.getNext() != null) {
-            cur = cur.getNext();
+        if (i >= size || i < 0)
+            return -404;
+
+        ListElement cur = first;
+        while (i != 0) {
+            cur = cur.next;
             i--;
         }
 
-        return cur.getValue();
+        return cur.value;
     }
+
 }
