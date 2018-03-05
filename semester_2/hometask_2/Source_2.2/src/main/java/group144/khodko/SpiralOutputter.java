@@ -3,7 +3,8 @@ package group144.khodko;
 import java.io.PrintStream;
 
 abstract class SpiralOutputter implements MatrixInterface {
-
+    
+    @Override
     void printSpiral(int[][] matrix, PrintStream stream) {
         int startIndex = matrix[0].length / 2;
         stream.print(matrix[startIndex][startIndex]);
