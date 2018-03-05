@@ -1,16 +1,14 @@
 package group144.khodko;
 
-public class ArrayStack<ValueType>  implements Stack<ValueType> {
+public class ArrayStack<ValueType> implements Stack<ValueType> {
 
-    private final int INITAL_SIZE = 10;
+    private final int INITIAL_SIZE = 10;
 
-    private ValueType[] arr;
+    private ValueType[] stackElements = (ValueType[]) new Object[INITIAL_SIZE];
     private int size = 0;
-    private int maxSize = INITAL_SIZE;
+    private int maxSize = INITIAL_SIZE;
 
-    ArrayStack() {
-        arr = (ValueType[]) new Object[INITAL_SIZE];
-    }
+    ArrayStack() { }
 
     @Override
     public void push(ValueType value) {
@@ -19,7 +17,7 @@ public class ArrayStack<ValueType>  implements Stack<ValueType> {
             maxSize *= 2;
         }
 
-        arr[size] = value;
+        stackElements[size] = value;
         size++;
     }
 
@@ -28,10 +26,10 @@ public class ArrayStack<ValueType>  implements Stack<ValueType> {
         if (isEmpty())
             throw new EmptyStackException("Stack is empty!");
 
-        ValueType result = arr[size - 1];
+        ValueType result = stackElements[size - 1];
         size--;
 
-        if (size < maxSize / 2 && maxSize != INITAL_SIZE) {
+        if (size < maxSize / 2 && maxSize != INITIAL_SIZE) {
             maxSize /= 2;
             resize(maxSize);
         }
@@ -45,11 +43,10 @@ public class ArrayStack<ValueType>  implements Stack<ValueType> {
 
     private void resize(int newSize) {
         ValueType[] newArr = (ValueType[]) new Object[newSize];
-       // System.arraycopy(arr, 0, newArr, 0, newSize);
         for (int i = 0; i < maxSize; ++i) {
-            newArr[i] = arr[i];
+            newArr[i] = stackElements[i];
         }
 
-        arr = newArr;
+        stackElements = newArr;
     }
 }
