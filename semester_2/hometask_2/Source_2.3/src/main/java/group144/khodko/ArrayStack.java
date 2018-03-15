@@ -43,9 +43,7 @@ public class ArrayStack<ValueType> implements Stack<ValueType> {
 
     private void resize(int newSize) {
         ValueType[] newArr = (ValueType[]) new Object[newSize];
-        for (int i = 0; i < maxSize; ++i) {
-            newArr[i] = stackElements[i];
-        }
+        System.arraycopy(stackElements, 0, newArr, 0, maxSize);
 
         stackElements = newArr;
     }

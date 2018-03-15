@@ -40,4 +40,13 @@ public class ArrayStackTest {
             stack.pop();
         assertEquals(true, stack.isEmpty());
     }
+
+    @Test(expected = EmptyStackException.class)
+    public void EmpyStackExceptionTest() {
+        Stack<Integer> stack = new ArrayStack<>();
+
+        stack.push(11);
+        stack.pop();
+        stack.pop();
+    }
 }

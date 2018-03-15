@@ -2,17 +2,15 @@ package group144.khodko;
 
 public class Calculator {
 
-    private Stack<Integer> operands;
+    private Stack<Integer> operands = new LinkedStack<Integer>();
 
-    Calculator() {
-        operands = new LinkStack<Integer>();
-    }
+    Calculator() {}
 
     Calculator(ArrayStack<Integer> stack) {
         operands = stack;
     }
 
-    Calculator(LinkStack<Integer> stack) {
+    Calculator(LinkedStack<Integer> stack) {
         operands = stack;
     }
 
@@ -33,8 +31,8 @@ public class Calculator {
                 }
             }
         }
-        catch(EmptyStackException id0) {
-            throw new WrongInputException("Input is incorrect!");
+        catch (EmptyStackException id0) {
+            throw new WrongInputException("Not enough operands in front of operator!");
         }
 
         return operands.pop();
