@@ -13,13 +13,13 @@ public class CountsTreeTest {
     @Test
     public void countTest() {
         CountsTree tree = new CountsTree(new Scanner("(+ 3 (* 12 (/ 6 3)))"));
-        assertEquals(27, tree.calculate());
+        assertEquals(27, tree.count());
     }
 
     @Test
     public void onlyAnswerTest() {
         CountsTree tree = new CountsTree(new Scanner("2"));
-        assertEquals(2, tree.calculate());
+        assertEquals(2, tree.count());
     }
 
     @Test

@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        OperandTree tree = new OperandTree();
+        Scanner input = new Scanner(System.in);
+        CountsTree tree = new CountsTree(input);
 
-        tree.input(System.in);
         tree.print(System.out);
     }
 }
