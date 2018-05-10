@@ -63,7 +63,7 @@ public class List {
             current = current.next;
             i--;
         }
-       return current.text;
+        return current.text;
     }
 
     public int getFrequencyOfWord(String word) {

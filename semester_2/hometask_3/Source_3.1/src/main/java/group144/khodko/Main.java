@@ -5,6 +5,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+
+/**
+ * Main class with interactive interface
+ */
 public class Main {
     public static void main(String[] args) {
         HashMap map = new HashMap(141);
@@ -56,6 +60,10 @@ public class Main {
             }
         }
     }
+
+    /**
+     * External methods (stats, help, file input)
+     */
     private static void printStats(HashMap map) {
         System.out.println("STATS: ");
         System.out.print("Element number: ");
@@ -89,7 +97,7 @@ public class Main {
         try {
             file = new Scanner(new FileInputStream("input.txt"));
         } catch (FileNotFoundException exception) {
-            System.out.println("Sorry, file is not found");
+            System.out.println("File is not found");
             return;
         }
         while (file.hasNext()) {
