@@ -8,5 +8,7 @@ public class Main {
         CountsTree tree = new CountsTree(input);
 
         tree.print(System.out);
+        System.out.println();
+        System.out.println(tree.count());
     }
 }
