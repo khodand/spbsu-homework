@@ -3,6 +3,9 @@ package group144.khodko;
 import java.io.*;
 import java.util.Scanner;
 
+/**
+ * Class gets next token and use operand or operator pattern
+ */
 public class CountsTree {
     private TreeNode root;
 
