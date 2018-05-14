@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<HBox focusTraversable="true" maxHeight="80.0" maxWidth="210.0" minHeight="80.0" minWidth="210.0" prefHeight="80.0" prefWidth="210.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="group144.khodko.Controller">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <top>
+            <Button mnemonicParsing="false" onAction="#incrementFirstAction" prefHeight="25.0" prefWidth="45.0" text="˄" BorderPane.alignment="CENTER" />
+         </top>
+         <bottom>
+            <Button mnemonicParsing="false" onAction="#decrementFirstAction" prefWidth="45.0" text="˅" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+         </bottom>
+         <center>
+            <Text fx:id="firstValue" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+      <ChoiceBox fx:id="operator" onAction="#calculate" prefWidth="42.0">
+         <HBox.margin>
+            <Insets top="30.0" />
+         </HBox.margin>
+      </ChoiceBox>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <top>
+            <Button mnemonicParsing="false" onAction="#incrementSecondAction" prefHeight="25.0" prefWidth="45.0" text="˄" BorderPane.alignment="CENTER" />
+         </top>
+         <bottom>
+            <Button mnemonicParsing="false" onAction="#decrementSecondAction" prefHeight="25.0" prefWidth="45.0" text="˅" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+         </bottom>
+         <center>
+            <Text fx:id="secondValue" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" =" wrappingWidth="26.13671875">
+         <HBox.margin>
+            <Insets top="35.0" />
+         </HBox.margin>
+      </Text>
+      <Text fx:id="resultValue" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="26.13671875">
+         <HBox.margin>
+            <Insets right="20.0" top="35.0" />
+         </HBox.margin>
+      </Text>
+   </children>
+</HBox>
