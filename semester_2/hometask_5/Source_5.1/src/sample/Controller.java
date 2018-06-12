@@ -16,7 +16,7 @@ public class Controller {
 
     // Actions when slider's toggle drags
     public void dragAction() {
-        slider1.valueProperty().addListener((observable, oldValue, newValue) -> progressBar1.progressProperty().setValue((double)newValue/100));
+        slider1.valueProperty().addListener((observable, oldValue, newValue) -> progressBar1.progressProperty().setValue((double)newValue / 100));
         slider1.valueProperty().addListener((observable, oldValue, newValue) -> text.textProperty().setValue(String.valueOf(newValue)));
     }
 }
