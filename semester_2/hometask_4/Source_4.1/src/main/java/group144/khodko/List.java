@@ -45,7 +45,7 @@ package group144.khodko;
         }
 
         /**
-         * @return the number of elements
+         * @return the length
          */
         public int getLength() {
             return length;
@@ -72,10 +72,12 @@ package group144.khodko;
             if (index >= length || index < 0) {
                 throw new IndexOutOfBoundsException();
             }
+			
             ListElement<T> temp = head;
             for (int i = 0; i < index; i++) {
                 temp = temp.getNext();
             }
+			
             ListElement<T> newElement = new ListElement<>(value, temp.getNext());
             temp.setNext(newElement);
             length++;
@@ -85,12 +87,13 @@ package group144.khodko;
          * Removes element from the list's head
          *
          * @return  head value
-         * @throws NoSuchElementException if list is empty
+         * @throws NullElementException if list is empty
          */
-        public T pop() throws NoSuchElementException {
+        public T pop() throws NullElementException {
             if (isEmpty()) {
-                throw new NoSuchElementException();
+                throw new NullElementException();
             }
+			
             T result = head.getValue();
             head = head.getNext();
             length--;
@@ -102,19 +105,22 @@ package group144.khodko;
          *
          * @param index index of element to be deleted
          * @return the value of element to be deleted
-         * @throws NoSuchElementException if index out of range
+         * @throws NullElementException if index out of range
          */
-        public T remove(int index) throws NoSuchElementException {
+        public T remove(int index) throws NullElementException {
             if (index == 0) {
                 return pop();
             }
+			
             if (index >= getLength()) {
-                throw new NoSuchElementException();
+                throw new NullElementException();
             }
+			
             ListElement<T> temp = head;
             for (int i = 0; i < index - 1; i++) {
                 temp = temp.getNext();
             }
+			
             T result = temp.getNext().getValue();
             temp.setNext(temp.getNext().getNext());
             length--;
@@ -122,9 +128,9 @@ package group144.khodko;
         }
 
         /**
-         * Returns the first index of element or -1 if is not found
+         * Returns the index of element or -1
          *
-         * @param value the value should be found
+         * @param value the value to be found
          * @return the first index or -1
          */
         public int find(T value) {

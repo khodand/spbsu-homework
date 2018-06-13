@@ -6,29 +6,7 @@ import static org.junit.Assert.*;
 public class ListTest {
 
     @Test
-    public void isEmptyTest() throws ElementAlreadyAddedException, NoSuchElementException {
-        List<Integer> list = new List<>();
-        assertTrue(list.isEmpty());
-        list.add(1111);
-        assertFalse(list.isEmpty());
-        list.pop();
-        assertTrue(list.isEmpty());
-    }
-
-    @Test
-    public void getLengthTest() throws ElementAlreadyAddedException, NoSuchElementException {
-        List<Integer> list = new List<>();
-        list.add(13);
-        assertEquals(1, list.getLength());
-        list.pop();
-        assertEquals(0, list.getLength());
-        list.add(1);
-        list.add(2);
-        assertEquals(2, list.getLength());
-    }
-
-    @Test
-    public void addToHeadTest() throws ElementAlreadyAddedException, NoSuchElementException {
+    public void addTest() throws ElementAlreadyAddedException, NullElementException {
         List<Integer> list = new List<>();
         list.add(101);
         list.add(22);
@@ -39,7 +17,7 @@ public class ListTest {
     }
 
     @Test
-    public void addWithIndexTest() throws ElementAlreadyAddedException, NoSuchElementException {
+    public void IndexAddingTest() throws ElementAlreadyAddedException, NullElementException {
         List<Integer> list = new List<>();
         list.add(0);
         list.add(1, 0);
@@ -51,32 +29,17 @@ public class ListTest {
         assertEquals(Integer.valueOf(3), list.pop());
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
-    public void addWithIndexExceptionTest() throws ElementAlreadyAddedException {
-        List<String> list = new List<>();
-        list.add("shdlasdck", 3);
-    }
-
     @Test
-    public void popFromHeadTest() throws ElementAlreadyAddedException, NoSuchElementException {
+    public void popTest() throws ElementAlreadyAddedException, NullElementException {
         List<Integer> list = new List<>();
         list.add(1);
         list.add(2);
         assertEquals(Integer.valueOf(2), list.pop());
         assertEquals(Integer.valueOf(1), list.pop());
     }
-
-    @Test(expected = NoSuchElementException.class)
-    public void popFromHeadExceptionTest() throws ElementAlreadyAddedException, NoSuchElementException {
-        List<Integer> list = new List<>();
-        list.pop();
-        list.add(11);
-        list.pop();
-        list.pop();
-    }
-
-    @Test
-    public void popWithIndexTest() throws ElementAlreadyAddedException, NoSuchElementException {
+	
+	@Test
+    public void removeTest() throws ElementAlreadyAddedException, NullElementException {
         List<Integer> list = new List<>();
         list.add(1);
         list.add(2);
@@ -86,14 +49,51 @@ public class ListTest {
         assertEquals(Integer.valueOf(1), list.pop());
     }
 
-    @Test(expected = NoSuchElementException.class)
-    public void popWithIndexExceptionTest() throws ElementAlreadyAddedException, NoSuchElementException {
+    @Test(expected = NullElementException.class)
+    public void popExceptionTest() throws ElementAlreadyAddedException, NullElementException {
+        List<Integer> list = new List<>();
+        list.pop();
+        list.add(11);
+        list.pop();
+        list.pop();
+    }
+
+    @Test(expected = NullElementException.class)
+    public void removeExceptionTest() throws ElementAlreadyAddedException, NullElementException {
         List<Integer> list = new List<>();
         list.remove(3);
     }
+	
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void IndexAddingExceptionTest() throws ElementAlreadyAddedException {
+        List<String> list = new List<>();
+        list.add("shdlasdck", 3);
+    }
+	
+	@Test
+    public void isEmptyTest() throws ElementAlreadyAddedException, NullElementException {
+        List<Integer> list = new List<>();
+        assertTrue(list.isEmpty());
+        list.add(1111);
+        assertFalse(list.isEmpty());
+        list.pop();
+        assertTrue(list.isEmpty());
+    }
 
     @Test
-    public void find() throws ElementAlreadyAddedException {
+    public void getLengthTest() throws ElementAlreadyAddedException, NullElementException {
+        List<Integer> list = new List<>();
+        list.add(13);
+        assertEquals(1, list.getLength());
+        list.pop();
+        assertEquals(0, list.getLength());
+        list.add(1);
+        list.add(2);
+        assertEquals(2, list.getLength());
+    }
+	
+    @Test
+    public void findTest() throws ElementAlreadyAddedException {
         List<String> list = new List<>();
         list.add("abcd");
         list.add("qwr");
