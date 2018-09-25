@@ -1,4 +1,4 @@
-package group144.khodko;
+package main.java.group144.khodko;
 
 import java.util.Arrays;
 import java.util.List;

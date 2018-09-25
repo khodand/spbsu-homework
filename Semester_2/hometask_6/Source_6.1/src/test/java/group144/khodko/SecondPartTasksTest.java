@@ -1,4 +1,4 @@
-package group144.khodko;
+package test.java.group144.khodko;
 
 import org.junit.Test;
 

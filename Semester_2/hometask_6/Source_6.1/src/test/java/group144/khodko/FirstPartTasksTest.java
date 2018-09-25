@@ -1,4 +1,4 @@
-/*package group144.khodko;
+package test.java.group144.khodko;
 
 import com.google.common.collect.ImmutableMap;
 import org.junit.Test;
@@ -203,4 +203,4 @@ public class FirstPartTasksTest {
             ALBUM_7, ALBUM_8, ALBUM_9, ALBUM_10, ALBUM_11, ALBUM_12, ALBUM_13, ALBUM_14, ALBUM_15, ALBUM_16, ALBUM_17,
             ALBUM_18, ALBUM_19
     };
-} */
+}
