@@ -1,11 +1,6 @@
 package group144.khodko;
 
-import org.junit.Before;
 import org.junit.Test;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 
 import static org.junit.Assert.*;
 
@@ -70,7 +65,6 @@ public class TrieTest {
 
         assertFalse(root.remove(""));
         addAll("aaa", "abbb", "ab");
-        assertTrue(root.remove(""));
         assertFalse(root.remove("a"));
         assertTrue(root.contains("aaa"));
         assertTrue(root.remove("aaa"));
