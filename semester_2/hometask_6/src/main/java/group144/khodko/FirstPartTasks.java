@@ -70,7 +70,7 @@ public final class FirstPartTasks {
     public static List<Album> sortByAverageRating(Stream<Album> albums) {
         return albums.sorted(
                 Comparator.comparing(
-                        album -> album.getTracks().stream().mapToInt(Track::getRating).average().getAsDouble()
+                        album -> -album.getTracks().stream().mapToInt(Track::getRating).average().getAsDouble()
                 )
         ).collect(Collectors.toList());
     }
