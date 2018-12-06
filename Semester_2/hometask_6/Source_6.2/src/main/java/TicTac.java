@@ -1,5 +1,3 @@
-package group144.khodko;
-
 import java.util.Collections;
 import java.util.Set;
 import java.util.TreeSet;
