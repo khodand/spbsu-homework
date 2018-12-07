@@ -13,7 +13,7 @@ public class Controller {
     protected Button[][] buttonArray;
 
     /** Objects realizing all game  */
-    protected Tictactoe game;
+    protected TicTac game;
 
     /** Initialization method */
     public void initialize() {
@@ -96,7 +96,7 @@ public class Controller {
 
     /** Starts a new game */
     protected void newGame() {
-        game = new Tictactoe();
+        game = new TicTac();
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 buttonArray[i][j].setText("");

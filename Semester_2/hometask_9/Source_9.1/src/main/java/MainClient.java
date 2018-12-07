@@ -13,7 +13,7 @@ public class MainClient {
         Scanner scanner = new Scanner(System.in);
         try {
             Socket socket = new Socket("localhost", scanner.nextInt());
-            App.main(Tictactoe.Player.O, socket, null);
+            App.main(TicTac.Player.O, socket, null);
         } catch (IOException e) {
             System.out.println("Port is not open");
         } catch (IllegalArgumentException |InputMismatchException e) {

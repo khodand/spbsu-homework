@@ -19,7 +19,7 @@ public class NetworkController extends Controller {
     /** Status of current app */
     public Status status;
 
-    private Tictactoe.Player player;
+    private TicTac.Player player;
     private ObjectOutputStream outputStream;
     private ObjectInputStream inputStream;
 
@@ -30,7 +30,7 @@ public class NetworkController extends Controller {
      * @param socket socket data will be transferred
      * @throws IOException if something wrong with socket
      */
-    public void setOptions(Tictactoe.Player player, Socket socket) throws IOException {
+    public void setOptions(TicTac.Player player, Socket socket) throws IOException {
         this.player = player;
         outputStream = new ObjectOutputStream(socket.getOutputStream());
         inputStream = new ObjectInputStream(socket.getInputStream());
@@ -49,7 +49,7 @@ public class NetworkController extends Controller {
         Alert finishMessage = new Alert(Alert.AlertType.INFORMATION);
         finishMessage.setTitle("Game over");
         if (game.hasWinner()) {
-            finishMessage.setContentText("Player " + (game.getPlayer() == Tictactoe.Player.X ? "O" : "X") + " wins!");
+            finishMessage.setContentText("Player " + (game.getPlayer() == TicTac.Player.X ? "O" : "X") + " wins!");
         } else {
             finishMessage.setContentText("Draw!");
         }
@@ -128,7 +128,7 @@ public class NetworkController extends Controller {
     @Override
     protected void newGame() {
         super.newGame();
-        if (player == Tictactoe.Player.O) {
+        if (player == TicTac.Player.O) {
             setSnooze(true);
             updateLabel("Waiting...");
             status = Status.WAITING_FOR_TURN;

@@ -6,30 +6,30 @@ public class TictactoeTest {
 
     @Test
     public void getPlayerTest() {
-        Tictactoe game = new Tictactoe();
+        TicTac game = new TicTac();
         game.nextTurn(0, 0);
-        assertEquals(Tictactoe.Player.O, game.getPlayer());
+        assertEquals(TicTac.Player.O, game.getPlayer());
         game.nextTurn(1, 1);
-        assertEquals(Tictactoe.Player.X, game.getPlayer());
+        assertEquals(TicTac.Player.X, game.getPlayer());
         game.nextTurn(1, 1);
-        assertEquals(Tictactoe.Player.X, game.getPlayer());
+        assertEquals(TicTac.Player.X, game.getPlayer());
     }
 
     @Test
     public void nextTurn() {
-        Tictactoe game = new Tictactoe();
+        TicTac game = new TicTac();
         game.nextTurn(0, 0);
         game.nextTurn(0, 1);
-        assertEquals(Tictactoe.Player.X, game.getPlayer());
+        assertEquals(TicTac.Player.X, game.getPlayer());
         game.nextTurn(0, 0);
-        assertEquals(Tictactoe.Player.X, game.getPlayer());
+        assertEquals(TicTac.Player.X, game.getPlayer());
         game.nextTurn(0, 2);
         assertFalse(game.isFinished());
     }
 
     @Test
     public void hasWinner() {
-        Tictactoe game = new Tictactoe();
+        TicTac game = new TicTac();
         game.nextTurn(0, 0);
         assertFalse(game.hasWinner());
         game.nextTurn(1, 0);
@@ -44,7 +44,7 @@ public class TictactoeTest {
 
     @Test
     public void isFinished() {
-        Tictactoe game = new Tictactoe();
+        TicTac game = new TicTac();
         game.nextTurn(0, 0);
         game.nextTurn(0, 1);
         game.nextTurn(0, 2);

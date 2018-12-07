@@ -10,7 +10,7 @@ import java.net.Socket;
 public class App extends Application {
 
     private static Socket socket;
-    private static Tictactoe.Player player;
+    private static TicTac.Player player;
     private NetworkController controller;
 
     /**
@@ -47,7 +47,7 @@ public class App extends Application {
     }
 
     /** The entry point for application */
-    public static void main(Tictactoe.Player player, Socket socket, String[] args) {
+    public static void main(TicTac.Player player, Socket socket, String[] args) {
         App.socket = socket;
         App.player = player;
         launch(args);

@@ -11,7 +11,7 @@ public class MainServer {
         try {
             serverSocket = new ServerSocket(0); // creates socket on random free port
             System.out.println("Port: " + serverSocket.getLocalPort());
-            App.main(Tictactoe.Player.X, serverSocket.accept(), null);
+            App.main(TicTac.Player.X, serverSocket.accept(), null);
         } catch (IOException e) {
             System.out.println("Problems with creating socket");
             e.printStackTrace();

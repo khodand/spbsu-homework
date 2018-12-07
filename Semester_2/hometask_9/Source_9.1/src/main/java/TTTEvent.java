@@ -7,7 +7,7 @@ import java.io.Serializable;
 public class TTTEvent implements Serializable {
 
     private TTTEventAction tttEventAction;
-    private Tictactoe.Player sender;
+    private TicTac.Player sender;
     private ActionType actionType;
 
     /** Type of action will be send */
@@ -20,7 +20,7 @@ public class TTTEvent implements Serializable {
      * @param sender player who makes this action
      * @param actionType type of action will be send
      */
-    public TTTEvent(TTTEventAction tttEventAction, Tictactoe.Player sender, ActionType actionType) {
+    public TTTEvent(TTTEventAction tttEventAction, TicTac.Player sender, ActionType actionType) {
         this.tttEventAction = tttEventAction;
         this.actionType = actionType;
         this.sender = sender;

@@ -1,5 +1,5 @@
 /** Class for performing tic-tac-toe game logic */
-public class Tictactoe {
+public class TicTac {
 
     /** Enum of player types */
     public enum Player {X, O}
@@ -14,7 +14,7 @@ public class Tictactoe {
     private Player currentPlayer = Player.X;
 
     /** Constructor method */
-    Tictactoe() {
+    TicTac() {
         buttons = new ButtonState[3][3];
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {

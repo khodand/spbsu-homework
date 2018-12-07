@@ -8,7 +8,7 @@ public class TTTEventTest {
 
     @Test
     public void sendTest() throws IOException, ClassNotFoundException {
-        TTTEvent tttEvent = new TTTEvent(new TTTEvent.ExitGameClickAction(), Tictactoe.Player.X, TTTEvent.ActionType.EXIT_GAME);
+        TTTEvent tttEvent = new TTTEvent(new TTTEvent.ExitGameClickAction(), TicTac.Player.X, TTTEvent.ActionType.EXIT_GAME);
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
         tttEvent.send(objectOutputStream);
@@ -22,7 +22,7 @@ public class TTTEventTest {
 
     @Test
     public void getConstructorTest() throws IOException {
-        TTTEvent tttEvent = new TTTEvent(new TTTEvent.ExitGameClickAction(), Tictactoe.Player.X, TTTEvent.ActionType.EXIT_GAME);
+        TTTEvent tttEvent = new TTTEvent(new TTTEvent.ExitGameClickAction(), TicTac.Player.X, TTTEvent.ActionType.EXIT_GAME);
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
         objectOutputStream.writeObject(tttEvent);
